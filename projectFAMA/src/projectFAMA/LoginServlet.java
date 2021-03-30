@@ -43,14 +43,17 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Utente user;
+		System.out.println("1");
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
 		try {
 			DBManager db = new DBManager();
 			ArrayList<Utente> utenti = new ArrayList<Utente>();
+			System.out.println("2");
 
-			if (db.controllaCredenziali(username, password).equals("Utente autorizzato")) {
-				response.sendRedirect("index.html");
+			if (db.controllaCredenziali(username, password) == true) {
+				System.out.println("3");
+				response.sendRedirect("indexforgotpass.html");
 			} else
 				response.sendRedirect("indexforgotpass.html");
 			db.close();

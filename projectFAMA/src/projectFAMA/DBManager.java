@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import projectFAMA.Utente;
 
+
 public class DBManager {
 	private Connection connessione;
 	private Statement query;
@@ -41,17 +42,11 @@ public class DBManager {
 		connessione.close();
 	}
 
-	public String controllaCredenziali(String user, String pass) throws Exception {
+	public boolean controllaCredenziali(String user, String pass) throws Exception {
+
 		String sql = "SELECT * FROM utente WHERE username='" + user + "' AND passw='" + pass + "';";
 		rs = query.executeQuery(sql);
-		System.out.println("Okok");
-		if (rs.equals(1)) {
-			return "Utente autorizzato";
-		} else {
-			System.out.println("Vai");
-			return "Credenziali non corrette";
-		}
-
+		return rs.next();
 	}
 
 	public ArrayList<Utente> getUtenti() throws Exception {
@@ -70,6 +65,11 @@ public class DBManager {
 		System.out.println("Utenti caricati: " + elenco.size());
 
 		return elenco;
+	}
+
+	public static void main(String[] args) throws Exception {
+		DBManager db = new DBManager();
+		System.out.println(db.controllaCredenziali("Maria", "rosa"));
 	}
 
 }
