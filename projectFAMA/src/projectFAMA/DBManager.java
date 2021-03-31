@@ -1,14 +1,15 @@
 package projectFAMA;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import projectFAMA.Utente;
-
 
 public class DBManager {
 	private Connection connessione;
@@ -67,9 +68,44 @@ public class DBManager {
 		return elenco;
 	}
 
+	public int idUtente() throws Exception {
+		int id = 0;
+		ResultSet rs;
+		PreparedStatement pstm;
+		String sql = "SELECT MAX(IdUtente) FROM utente";
+		rs = query.executeQuery(sql);
+		while (rs.next()) {
+			id = rs.getInt(1);
+		}
+		return id;
+	}
+
+	public void registrazioneUtente(Utente u) throws Exception {
+		String sqlInsert = "INSERT INTO utente VALUES (?,?,?,?,?,?,?,?,?);";
+		PreparedStatement pstm;
+		pstm = connessione.prepareStatement(sqlInsert);
+		pstm.setInt(1, u.getIdUtente());
+		pstm.setString(2, u.getUsername());
+		pstm.setString(3, u.getPassw());
+		pstm.setString(4, u.getNome());
+		pstm.setString(5, u.getCognome());
+		pstm.setString(6, u.getDataNascita());
+		pstm.setString(7, u.getTelefono());
+		pstm.setString(8, u.getEmail());
+		pstm.setBoolean(9, u.isModeratore());
+		System.out.println(pstm);
+		pstm.executeUpdate();
+
+	}
+
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
-		System.out.println(db.controllaCredenziali("Maria", "rosa"));
+		// System.out.println(db.controllaCredenziali("Maria", "rosa"));
+		int id = db.idUtente() + 1;
+
+		Utente u = new Utente(id, "Lol", "pASS", "Lkl", "Lol", "2021-01-01", "33333", "c@CICE.COM", false);
+		db.registrazioneUtente(u);
+		System.out.println(db.idUtente());
 	}
 
 }
