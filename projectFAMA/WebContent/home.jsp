@@ -1,4 +1,6 @@
-<!-- ciao -->
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!doctype html>
 <html lang="en">
 
@@ -129,7 +131,7 @@
             <div class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
                 <div class="content" data-aos="fade-right" data-aos-delay="200">
                     <h2>ENTRA NELLA NOSTRA NEWSLETTER</h2>
-                    <p>Iscriviti per rimanere aggiornato su tutte le novit√† della nostra agenzia.</p>
+                    <p>Iscriviti per rimanere aggiornato su tutte le novit‡ della nostra agenzia.</p>
                 </div>
                 <div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400" data-aos-offset="0">
                     <a href="#" class="btn btn-primary">Join Newsletter</a>
@@ -143,7 +145,7 @@
         <div class="container">
             <div class="title text-center">
                 <h6 class="title-primary">Il nostro team</h6>
-                <h1 class="title-blue">Perch√® scegliere noi</h1>
+                <h1 class="title-blue">PerchË scegliere noi</h1>
             </div>
             <div class="container">
                 <div class="row">
@@ -152,8 +154,8 @@
                             <img class="mr-4" src="assets/images/service1.png" alt="Web Development">
                             <div class="media-body">
                                 <h5>Ricerca Intuitiva</h5>
-                                Il nostro sito √® sviluppato per dar modo al cliente di trovare subito
-                                ci√≤ di cui ha bisogno.
+                                Il nostro sito Ë sviluppato per dar modo al cliente di trovare subito
+                                ciÚ di cui ha bisogno.
                             </div>
                         </div>
                     </div>
@@ -171,8 +173,8 @@
                             <img class="mr-4" src="assets/images/service3.png" alt="Web Development">
                             <div class="media-body">
                                 <h5>Nuove idee nuove destinazioni</h5>
-                                Cerchiamo giorno per giorno localit√† trend per dare ai nostri clienti
-                                pi√π possibilit√† di scelta.
+                                Cerchiamo giorno per giorno localit‡ trend per dare ai nostri clienti
+                                pi˘ possibilit‡ di scelta.
                             </div>
                         </div>
                     </div>
@@ -181,7 +183,7 @@
                             <img class="mr-4" src="assets/images/service4.png" alt="Web Development">
                             <div class="media-body">
                                 <h5>Viaggiare senza limiti</h5>
-                                Per la nostra agenzia non ci sono localit√† irraggiungibili.
+                                Per la nostra agenzia non ci sono localit‡ irraggiungibili.
                             </div>
                         </div>
                     </div>
@@ -190,7 +192,7 @@
                             <img class="mr-4" src="assets/images/service1.png" alt="Web Development">
                             <div class="media-body">
                                 <h5>Assistenza Veloce </h5>
-                                Grazie alla professionalit√† del nostro team, garantiamo assistenza 24/7.
+                                Grazie alla professionalit‡ del nostro team, garantiamo assistenza 24/7.
                             </div>
                         </div>
                     </div>
@@ -200,7 +202,7 @@
                             <div class="media-body">
                                 <h5>Monitoraggio dei feedback</h5>
                                 Il nostro team monitora l'esperienze dei clienti,
-                                per fornire un servizio sempre pi√π accattivante.
+                                per fornire un servizio sempre pi˘ accattivante.
                             </div>
                         </div>
                     </div>
@@ -247,7 +249,7 @@
                         data-aos-duration="800">
                         <div class="post-content text-sm-right">
                              <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   -->
-                            <h3><a href="#">Le spiagge pi√π belle solo da noi</a></h3>
+                            <h3><a href="#">Le spiagge pi˘ belle solo da noi</a></h3>
                             <p>Lecce, Genova, Palermo</p>
                             <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>-->
                         </div>
@@ -290,7 +292,7 @@
                     ogni tua esigenza</p>
                     <h5>Agenzia Fama</h5>
                     <ul class="list-unstyled">
-                        <li>Fedelt√†</li>
+                        <li>Fedelt‡</li>
                         <li>Sicurezza</li>
                         <li>Divertimento</li>
                         <li>Gratis</li>
@@ -324,7 +326,7 @@
         <div class="container">
             <div class="title text-center">
                 <h6 class="title-primary">I nostri posti</h6>
-                <h1 class="title-blue">Le mete pi√π gettonate</h1>
+                <h1 class="title-blue">Le mete pi˘ gettonate</h1>
             </div>
             <div class="row no-gutters">
                 <div class="col-md-4">
@@ -385,7 +387,7 @@
                                         Socia</span>
                                     <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="600"
                                         data-aos-offset="0">Lei ha la tecnica giusta per vendere
-                                        qualsiasi cosa, riesce a promuovere ogni localit√† d'Italia dando
+                                        qualsiasi cosa, riesce a promuovere ogni localit‡ d'Italia dando
                                         vita alle loro caratteristiche riuscendo ad esaltarle</p>
                                 </div>
                             </div>
@@ -402,8 +404,8 @@
                                         Socio</span>
                                     <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="600"
                                         data-aos-offset="0">Il mago del computer, si occupa della gestione del sito
-                                        web. Lui l'ha creato, lui lo gestisce ed √® lui che lo aggiorna, tutto questo
-                                        in grandissima velocit√† ma soprattutto professionalit√†</p>
+                                        web. Lui l'ha creato, lui lo gestisce ed Ë lui che lo aggiorna, tutto questo
+                                        in grandissima velocit‡ ma soprattutto professionalit‡</p>
                                 </div>
                             </div>
                         </div>
@@ -437,7 +439,7 @@
                                     <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="600"
                                         data-aos-offset="0">Sa consigliare il posto giusto per la giusta occasione,
                                         se non sapete come passare le vacanze o dove festeggiare la luna di miele,
-                                        chiedete a lui e vi consiglier√† il miglior posto in base alle vostre esigenze </p>
+                                        chiedete a lui e vi consiglier‡ il miglior posto in base alle vostre esigenze </p>
                                 </div>
                             </div>
                         </div>
@@ -476,7 +478,7 @@
             <div class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
                 <div class="content" data-aos="fade-right" data-aos-delay="200">
                    <h2>ENTRA NELLA NOSTRA NEWSLETTER</h2>
-                    <p>Iscriviti per rimanere aggiornato su tutte le novit√† della nostra agenzia.</p>
+                    <p>Iscriviti per rimanere aggiornato su tutte le novit‡ della nostra agenzia.</p>
                 </div>
                 <div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400" data-aos-offset="0">
                     <a href="#" class="btn btn-primary">Join Newsletter</a>
