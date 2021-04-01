@@ -53,9 +53,9 @@ public class LoginServlet extends HttpServlet {
 
 			if (db.controllaCredenziali(username, password) == true) {
 				System.out.println("3");
-				response.sendRedirect("indexforgotpass.html");
+				response.sendRedirect("home.html");
 			} else
-				response.sendRedirect("indexforgotpass.html");
+				response.sendRedirect("indexforgotpass.jsp");
 			db.close();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -125,7 +125,7 @@
 						<!--  <button class="login100-form-btn">
 							Sign In
 						</button>-->
-						<input type="submit" value="Invia">
+						<input type="submit" action="RegistrazioneServlet" method="post" value="registra">
 					</div>
 			</div>
 			</form>

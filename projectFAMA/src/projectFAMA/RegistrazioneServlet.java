@@ -55,7 +55,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			System.out.println(u.toString());
 			if (password.equals(confirm_password)) {
 				db.registrazioneUtente(u);
-				response.sendRedirect("index.html");
+				response.sendRedirect("login.jsp");
 				// db.close();
 			} else {
 				response.sendRedirect("indexsignin.jsp");
