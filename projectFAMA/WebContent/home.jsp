@@ -40,7 +40,7 @@
                             aria-hidden="true"></i></a>--><img src=>
                 </div>
                 <nav class="d-flex aic">
-                    <!--<a href="index.html" class="login"><i class="fa fa-user" aria-hidden="true"></i>Index</a>-->
+                    <a href="LogOutServlet" class="login"><i class="fa fa-user" aria-hidden="true"></i>Log Out</a>
                     <ul class="nav social d-none d-md-flex">
                         <li><a href="https://www.facebook.com/francesco.minerba.94" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://twitter.com/frances05288570" target="_blank"><i class="fa fa-twitter"></i></a></li>

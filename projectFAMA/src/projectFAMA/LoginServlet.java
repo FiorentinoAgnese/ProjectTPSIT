@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("SESSION_UTENTE", username);
 				response.sendRedirect("home.jsp");
 			} else
-				response.sendRedirect("indexforgotpass.jsp");
+				response.sendRedirect("login.jsp");
 			db.close();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -99,7 +99,17 @@ public class DBManager {
 		pstm.executeUpdate();
 
 	}
-
+	public String getPassword(String email) throws Exception {
+		String q = "SELECT * FROM REGISTRAZIONI WHERE EMAIL='" + email + "';";
+		rs = query.executeQuery(q);
+		String s = "";
+		if (rs.next()) {
+			String password = rs.getString("password");
+			String username = rs.getString("username");
+			s = "Nome utente: " + username + "\n" + "Password: " + password;
+		}
+		return s;
+	}
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
 		// System.out.println(db.controllaCredenziali("Maria", "rosa"));
