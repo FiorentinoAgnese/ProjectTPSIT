@@ -38,7 +38,6 @@ public class RegistrazioneServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Preoccupare");
 		String nome = request.getParameter("name");
 		String cognome = request.getParameter("surname");
 		String dataN = request.getParameter("dateofbirthday");

@@ -18,7 +18,8 @@
 <link rel="stylesheet" type="text/css"
 	href="login/fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css"
+	href="login/vendor/animate/animate.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="login/vendor/css-hamburgers/hamburgers.min.css">
@@ -43,7 +44,7 @@
 			style="background-image: url('login/images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post"
-					action="Registr">
+					action="RegistrazioneServlet">
 					<span class="login100-form-logo"> <i
 						class="zmdi zmdi-landscape"></i>
 					</span> <span class="login100-form-title p-b-34 p-t-27"> Sign In </span>
@@ -125,13 +126,14 @@
 						<!--  <button class="login100-form-btn">
 							Sign In
 						</button>-->
-						<input type="submit" action="RegistrazioneServlet" method="post" value="registra">
+						<input type="submit" value="Invia">
 					</div>
-			</div>
 			</form>
+			</div>
+			
 		</div>
 	</div>
-	</div>
+
 
 
 	<div id="dropDownSelect1"></div>

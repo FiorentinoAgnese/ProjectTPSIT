@@ -75,7 +75,7 @@ public class DBManager {
 		String sql = "SELECT MAX(IdUtente) FROM utente";
 		rs = query.executeQuery(sql);
 		while (rs.next()) {
-			id = rs.getInt(1);
+			id = rs.getInt(1) + 1;
 		}
 		return id;
 	}
