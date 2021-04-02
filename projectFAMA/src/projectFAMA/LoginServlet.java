@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			ArrayList<Utente> utenti = new ArrayList<Utente>();
 
 			if (db.controllaCredenziali(username, password) == true) {
-				request.getSession().setAttribute("SESSION_USER", username);
+				request.getSession().setAttribute("SESSION_UTENTE", username);
 				response.sendRedirect("home.jsp");
 			} else
 				response.sendRedirect("indexforgotpass.jsp");

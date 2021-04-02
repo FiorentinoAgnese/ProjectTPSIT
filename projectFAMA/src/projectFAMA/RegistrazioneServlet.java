@@ -38,6 +38,7 @@ public class RegistrazioneServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Md5Pass md = new Md5Pass();
 		String nome = request.getParameter("name");
 		String cognome = request.getParameter("surname");
 		String dataN = request.getParameter("dateofbirthday");
@@ -46,16 +47,16 @@ public class RegistrazioneServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
 		String confirm_password = request.getParameter("pass1");
-
+		String passCriptata = md.Md5Pa(confirm_password);
 		try {
 			DBManager db = new DBManager();
 			int id = db.idUtente();
-			Utente u = new Utente(id, username, confirm_password, nome, cognome, dataN, tel, email, false);
+			Utente u = new Utente(id, username, passCriptata, nome, cognome, dataN, tel, email, false);
 			System.out.println(u.toString());
 			if (password.equals(confirm_password)) {
 				db.registrazioneUtente(u);
 				response.sendRedirect("login.jsp");
-				// db.close();
+				db.close();
 			} else {
 				response.sendRedirect("indexsignin.jsp");
 				db.close();

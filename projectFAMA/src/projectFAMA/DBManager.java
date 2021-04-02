@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import projectFAMA.Md5Pass;
 import projectFAMA.Utente;
 
 public class DBManager {
@@ -44,8 +44,10 @@ public class DBManager {
 	}
 
 	public boolean controllaCredenziali(String user, String pass) throws Exception {
-
-		String sql = "SELECT * FROM utente WHERE username='" + user + "' AND passw='" + pass + "';";
+		Md5Pass md = new Md5Pass();
+		String passCriptata = md.Md5Pa(pass);
+		System.out.println("Md5: " + passCriptata);
+		String sql = "SELECT * FROM utente WHERE username='" + user + "' AND passw='" + passCriptata + "';";
 		rs = query.executeQuery(sql);
 		return rs.next();
 	}
@@ -98,17 +100,6 @@ public class DBManager {
 
 	}
 
-	public String getPassword(String email) throws Exception {
-		String q = "SELECT * FROM REGISTRAZIONI WHERE EMAIL='" + email + "';";
-		rs = query.executeQuery(q);
-		String s = "";
-		if (rs.next()) {
-			String password = rs.getString("password");
-			String username = rs.getString("username");
-			s = "Nome utente: " + username + "\n" + "Password: " + password;
-		}
-		return s;
-	}
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
 		// System.out.println(db.controllaCredenziali("Maria", "rosa"));
