@@ -34,7 +34,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('login/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="MailServlet" method="get">
 					<span class="login100-form-title p-b-34 p-t-27">
 						Insert your email
 					</span>

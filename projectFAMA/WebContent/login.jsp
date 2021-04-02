@@ -69,8 +69,8 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-					<input type="submit" action="LoginServlet" method="post">
-						 <!--  <button type="submit"class="login100-form-btn" action="LoginServlet" method="post">Login</button>-->
+					 <!-- <input type="submit" action="LoginServlet" method="post">-->
+						 <button type="submit" class="login100-form-btn">Login</button>
 					</div>
 
 					<div class="text-center p-t-10">
