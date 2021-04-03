@@ -29,4 +29,8 @@ public class ReadPropertyFileFromClassPath {
 
         return prop;
     }
+    public static void main(String[] args) {
+		ReadPropertyFileFromClassPath r=new ReadPropertyFileFromClassPath();
+		System.out.println(r.loadProperties("config.properties"));
+	}
 }

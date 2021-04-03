@@ -28,15 +28,23 @@ public class MailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String email = request.getParameter("txtEmail");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("Pass");
+		String pass_confirm = request.getParameter("CPass");
 		System.out.println(email);
 		try {
-			MailManager cmm = new MailManager();
-			if (cmm.sendMail(email)) {
+			DBManager db = new DBManager();
+			MailManager m = new MailManager();
+			if (pass.equals(pass_confirm)) {
+				// System.out.println("ok");
+				m.sendMail(email, pass_confirm);
 				response.sendRedirect("index.jsp");
+				// m.close();
+				// db.close();
 			} else
-				response.sendRedirect("registrazione.jsp");
-			cmm.close();
+				response.sendRedirect("indexsignin.jsp");
+			m.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

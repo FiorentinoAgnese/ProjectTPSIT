@@ -99,17 +99,24 @@ public class DBManager {
 		pstm.executeUpdate();
 
 	}
-	public String getPassword(String email) throws Exception {
-		String q = "SELECT * FROM REGISTRAZIONI WHERE EMAIL='" + email + "';";
-		rs = query.executeQuery(q);
-		String s = "";
-		if (rs.next()) {
-			String password = rs.getString("password");
-			String username = rs.getString("username");
-			s = "Nome utente: " + username + "\n" + "Password: " + password;
+
+	public String aggiornaPassword(String pass, String email) {
+		String passw = pass;
+		Md5Pass md = new Md5Pass();
+		String passCriptata = md.Md5Pa(pass);
+		System.out.println("Md5: " + passCriptata);
+		String sqlUpdate = "UPDATE utente SET Passw ='" + passCriptata + "' WHERE Email = '" + email + "';";
+		PreparedStatement pstm;
+		try {
+			pstm = connessione.prepareStatement(sqlUpdate);
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return s;
+		return passw;
 	}
+
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
 		// System.out.println(db.controllaCredenziali("Maria", "rosa"));
