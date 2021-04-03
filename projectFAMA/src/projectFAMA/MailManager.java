@@ -47,8 +47,8 @@ public class MailManager {
 			DBManager db = new DBManager();
 			String password = db.aggiornaPassword(pass, email);
 
-			// Imposto la password come testo del messaggio
-			message.setText(password);
+			// Imposto come testo del messaggio un messaggio di modifica riuscita
+			message.setText("La password è stata modificata correttamente!!!");
 			// Invio la mail
 			transport.sendMessage(message, message.getAllRecipients());
 			System.out.println("Mail Inviata");
