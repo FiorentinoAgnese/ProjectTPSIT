@@ -65,7 +65,7 @@
                         <!-- <li class="nav-item"><a class="nav-link" href="#servizi">Servizi</a></li>-->
                         <li class="nav-item"><a class="nav-link" href="#offerte">Offerte</a></li>
                         <li class="nav-item"><a class="nav-link" href="#mete">Mete</a></li>
-                        <li class="nav-item"><a class="nav-link" href="prenotazione.html">Prenotazione</a></li>
+                        <li class="nav-item"><a class="nav-link" href="prenotazione.jsp">Prenotazione</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contatti</a></li>
                     </ul>
                     <form class="bg-white search-form" method="get" id="searchform">
