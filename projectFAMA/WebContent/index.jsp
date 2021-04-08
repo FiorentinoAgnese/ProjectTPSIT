@@ -1,6 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" import="java.util.Locale" import="org.apache.tomcat.jni.Local" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%!
+	String locale;
+ %>
+ <%
+   locale = request.getParameter("locale");
+   application.setAttribute("LOCALE_KEY", locale);
+ %>
 <!doctype html>
 <html lang="en">
 
@@ -21,8 +30,67 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
+<style>
+.dropbtn {
+  background-color:rgb(0,0,0);
+	opacity:0.5;
+  color: white;
+  padding: 12px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
 
+/*.dropdown {
+  position: relative;
+  display: inline-block;
+}*/
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ee1515}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #000;
+}
+</style>
 <body>
+  <fmt:setLocale value="<%=locale%>"/>		
+  <fmt:setBundle basename="it.meucci.bundle.messages" var="resourceBundle"/> 			
+    <!--<center>
+    <table>
+    	<tr>
+    		<td><a href="index.jsp?locale=en_US"><img src="images/uk.jpg" width="80"></a></td>
+    		<td><a href="index.jsp?locale=it_IT"><img src="images/it.jpg" width="80"></a></td>
+    		<td><a href="index.jsp?locale=fr_FR"><img src="images/fr.jpg" width="80"></a></td>
+    		<td><a href="index.jsp?locale=es_US"><img src="images/es.jpg" width="80"></a></td>
+    	</tr>
+    </table>
+  	<br><br><br><br><br><br>   
+    
+    <A href="login.jsp"><font face="Arial" size="25" color="LIGHTGREEN">
+                   <fmt:message key="welcomeBtn" bundle="${resourceBundle}"/>
+                   </font>
+     </A>
+    </center>-->
     <div class="css-loader">
         <div class="loader-inner line-scale d-flex align-items-center justify-content-center"></div>
     </div>
@@ -31,11 +99,11 @@
             <div  class="top-header d-none d-sm-flex justify-content-between align-items-center">
                  <div class="contact">
                     <!-- <a href="mailto:FAMA@gmail.com"><i class="fa fa-envelope"
-                            aria-hidden="true"></i></a>--><img src=>
+                            aria-hidden="true"></i></a>-->
                 </div>
                 <nav class="d-flex aic">
                 <!--<a href="home.html" class="login"><i class="fa fa-user" aria-hidden="true"></i>Home</a>-->
-                    <a href="login.jsp" class="login"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
+                    <a href="login.jsp" class="login"><i class="fa fa-user" aria-hidden="true"></i><fmt:message key="loginBtn" bundle="${resourceBundle}"/></a>
                     <ul class="nav social d-none d-md-flex">
                         <li><a href="https://www.facebook.com/francesco.minerba.94" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://twitter.com/frances05288570" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -54,15 +122,24 @@
                     <a class="cart" href="#"><i class="fa fa-shopping-cart"></i></a>
                 </div>
                 <a class="search-icon d-none d-md-block" href="#"><i class="fa fa-search"></i></a>-->
-                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#servizi">Servizi</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#chisiamo?">Chi Siamo?</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#mete">Mete</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#people">Personale</a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.jsp">Prenotazione</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contatti</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><fmt:message key="home" bundle="${resourceBundle}"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#servizi"><fmt:message key="servizi" bundle="${resourceBundle}"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#chisiamo?"><fmt:message key="essere" bundle="${resourceBundle}"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#mete"><fmt:message key="mete" bundle="${resourceBundle}"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#people"><fmt:message key="staff" bundle="${resourceBundle}"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.jsp"><fmt:message key="prenota" bundle="${resourceBundle}"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact"><fmt:message key="contatti" bundle="${resourceBundle}"/></a></li>
+                 <div class="dropdown">
+  					<a class="dropbtn">Lingue</a>
+  						<div class="dropdown-content">
+    						<a href="index.jsp?locale=it_IT"><img src="images/italia.png" width="50"></a>
+							<a href="index.jsp?locale=en_US"><img src="images/inglese.jpg" width="50"></a>
+    						<a href="index.jsp?locale=fr_FR"><img src="images/francia.png" width="50"></a>
+    						<a href="index.jsp?locale=es_US"><img src="images/spagna.png" width="50"></a>
+  						</div>
+				</div>
                     </ul>
                      <form class="bg-white search-form" method="get" id="searchform">
                         <div class="input-group">
@@ -87,13 +164,9 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide slide-content d-flex align-items-center">
                                 <div class="single-slide">
-                                    <h1 data-aos="fade-right" data-aos-delay="200">Dimentica<br> La tua routine giornaliera
+                                    <h1 data-aos="fade-right" data-aos-delay="200"><fmt:message key="benvenuto" bundle="${resourceBundle}"/>
                                     </h1>
-                                    <p data-aos="fade-right" data-aos-delay="600">Allontanati dalla tua realtà giornaliera
-                                        ti offriamo le migliori location per trascorrere le tue vacanze 
-                                        <br>
-                                        La nostra azienda opera da anni nel settore permettendo di garantire ai nuovi clienti
-                                        la massima professionalità nel settore
+                                    <p data-aos="fade-right" data-aos-delay="600"><fmt:message key="benvenuto1" bundle="${resourceBundle}"/>
                                     </p>
                                     <a href="login.jsp" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">See
                                         More</a>
@@ -103,12 +176,9 @@
                             </div>
                             <div class="swiper-slide slide-content d-flex align-items-center">
                                 <div class="single-slide">
-                                    <h1 data-aos="fade-right" data-aos-delay="200">Viaggia<br> Con noi
+                                    <h1 data-aos="fade-right" data-aos-delay="200"><fmt:message key="benvenuto2" bundle="${resourceBundle}"/>
                                     </h1>
-                                    <p data-aos="fade-right" data-aos-delay="600">Nel nostro roster abbiamo le migliori
-                                        location.
-                                        <br> 
-                                        Cosa aspetti?
+                                    <p data-aos="fade-right" data-aos-delay="600"><fmt:message key="benvenuto3" bundle="${resourceBundle}"/>
                                     </p>
                                     <a href="login.jsp" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">See
                                         More</a>
@@ -134,11 +204,11 @@
         <div class="container">
             <div class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
                 <div class="content" data-aos="fade-right" data-aos-delay="200">
-                    <h2>ENTRA NELLA NOSTRA NEWSLETTER</h2>
-                    <p>Iscriviti per rimanere aggiornato su tutte le novità della nostra agenzia.</p>
+                    <h2><fmt:message key="new1" bundle="${resourceBundle}"/></h2>
+                    <p><fmt:message key="new2" bundle="${resourceBundle}"/></p>
                 </div>
                 <div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400" data-aos-offset="0">
-                    <a href="#" class="btn btn-primary">Join Newsletter</a>
+                    <a href="#" class="btn btn-primary"><fmt:message key="new3" bundle="${resourceBundle}"/></a>
                 </div>
             </div>
         </div>
@@ -148,8 +218,8 @@
     <section class="services" id="servizi">
         <div class="container">
             <div class="title text-center">
-                <h6 class="title-primary">Il nostro team</h6>
-                <h1 class="title-blue">Perchè scegliere noi</h1>
+                <h6 class="title-primary"><fmt:message key="team" bundle="${resourceBundle}"/></h6>
+                <h1 class="title-blue"><fmt:message key="scelta" bundle="${resourceBundle}"/></h1>
             </div>
             <div class="container">
                 <div class="row">
@@ -157,9 +227,8 @@
                         <div class="media" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                             <img class="mr-4" src="assets/images/service1.png" alt="Web Development">
                             <div class="media-body">
-                                <h5>Ricerca Intuitiva</h5>
-                                Il nostro sito è sviluppato per dar modo al cliente di trovare subito
-                                ciò di cui ha bisogno.
+                                <h5><fmt:message key="motivo1" bundle="${resourceBundle}"/></h5>
+                                	<fmt:message key="motivo11" bundle="${resourceBundle}"/>
                             </div>
                         </div>
                     </div>
@@ -167,8 +236,8 @@
                         <div class="media" data-aos="fade-up" data-aos-delay="400" data-aos-duration="600">
                             <img class="mr-4" src="assets/images/service2.png" alt="Web Development">
                             <div class="media-body">
-                                <h5>Con noi siete al sicuro</h5>
-                                I vostri dati personali verranno trattati attraverso l' Informativa sulla privacy (art. 13 GDPR).
+                                <h5><fmt:message key="motivo2" bundle="${resourceBundle}"/></h5>
+                                	<fmt:message key="motivo21" bundle="${resourceBundle}"/>
                             </div>
                         </div>
                     </div>
@@ -176,9 +245,8 @@
                         <div class="media" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
                             <img class="mr-4" src="assets/images/service3.png" alt="Web Development">
                             <div class="media-body">
-                                <h5>Nuove idee nuove destinazioni</h5>
-                                Cerchiamo giorno per giorno località trend per dare ai nostri clienti
-                                più possibilità di scelta.
+                                <h5><fmt:message key="motivo3" bundle="${resourceBundle}"/></h5>
+                                	<fmt:message key="motivo31" bundle="${resourceBundle}"/>
                             </div>
                         </div>
                     </div>
@@ -186,8 +254,8 @@
                         <div class="media" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                             <img class="mr-4" src="assets/images/service4.png" alt="Web Development">
                             <div class="media-body">
-                                <h5>Viaggiare senza limiti</h5>
-                                Per la nostra agenzia non ci sono località irraggiungibili.
+                                <h5><fmt:message key="motivo4" bundle="${resourceBundle}"/></h5>
+                                	<fmt:message key="motivo41" bundle="${resourceBundle}"/>
                             </div>
                         </div>
                     </div>
@@ -195,8 +263,8 @@
                         <div class="media" data-aos="fade-up" data-aos-delay="400" data-aos-duration="600">
                             <img class="mr-4" src="assets/images/service1.png" alt="Web Development">
                             <div class="media-body">
-                                <h5>Assistenza Veloce </h5>
-                                Grazie alla professionalità del nostro team, garantiamo assistenza 24/7.
+                                <h5><fmt:message key="motivo5" bundle="${resourceBundle}"/> </h5>
+                                	<fmt:message key="motivo51" bundle="${resourceBundle}"/>
                             </div>
                         </div>
                     </div>
@@ -204,9 +272,8 @@
                         <div class="media" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
                             <img class="mr-4" src="assets/images/service5.png" alt="Web Development">
                             <div class="media-body">
-                                <h5>Monitoraggio dei feedback</h5>
-                                Il nostro team monitora l'esperienze dei clienti,
-                                per fornire un servizio sempre più accattivante.
+                                <h5><fmt:message key="motivo6" bundle="${resourceBundle}"/></h5>
+                                	<fmt:message key="motivo61" bundle="${resourceBundle}"/>
                             </div>
                         </div>
                     </div>
@@ -289,17 +356,16 @@
             <div class="row">
                 <div class="offset-xl-1 col-xl-6" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
                     <div class="title">
-                        <h6 class="title-primary">chi siamo?</h6>
-                        <h1>La miglior agenzia viaggi esistente</h1>
+                        <h6 class="title-primary"><fmt:message key="essere" bundle="${resourceBundle}"/></h6>
+                        <h1><fmt:message key="essere1" bundle="${resourceBundle}"/></h1>
                     </div>
-                    <p>Spendi i tuoi soldi da noi, non te ne pentirai, ti faremo andare nei migliori posti d'italia  accontentando
-                    ogni tua esigenza</p>
-                    <h5>Agenzia Fama</h5>
+                    <p><fmt:message key="essere2" bundle="${resourceBundle}"/></p>
+                    <h5><fmt:message key="nome" bundle="${resourceBundle}"/></h5>
                     <ul class="list-unstyled">
-                        <li>Fedeltà</li>
-                        <li>Sicurezza</li>
-                        <li>Divertimento</li>
-                        <li>Gratis</li>
+                        <li><fmt:message key="principio1" bundle="${resourceBundle}"/></li>
+                        <li><fmt:message key="principio2" bundle="${resourceBundle}"/></li>
+                        <li><fmt:message key="principio3" bundle="${resourceBundle}"/></li>
+                        <li><fmt:message key="principio4" bundle="${resourceBundle}"/></li>
                     </ul>
                 </div>
                 <div class="col-xl-5 gallery">
@@ -329,17 +395,17 @@
      <section class="pricing-table" id="mete">
         <div class="container">
             <div class="title text-center">
-                <h6 class="title-primary">I nostri posti</h6>
-                <h1 class="title-blue">Le mete più gettonate</h1>
+                <h6 class="title-primary"><fmt:message key="posti" bundle="${resourceBundle}"/></h6>
+                <h1 class="title-blue"><fmt:message key="metee" bundle="${resourceBundle}"/></h1>
             </div>
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <div class="single-pricing text-center" data-aos="fade-up" data-aos-delay="0"
                         data-aos-duration="600">
-                        <h2>Firenze</h2>
+                        <h2><fmt:message key="meta1" bundle="${resourceBundle}"/></h2>
                         <p><img src="images/firenze.jpg" width=350px ><br><br>
-                        Se sei un appassionato di arte e cultura, Firenze è la città perfetta per te</p>
-                        <a href="https://it.wikipedia.org/wiki/Firenze" class="btn btn-primary">Info</a> 
+                        <fmt:message key="desc1" bundle="${resourceBundle}"/></p>
+                        <a href="https://it.wikipedia.org/wiki/Firenze" class="btn btn-primary"><fmt:message key="info" bundle="${resourceBundle}"/></a> 
                         <svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd" fill="rgb(238, 21, 21)"
                                 d="M39.000,31.999 C39.000,31.999 -21.000,86.500 9.000,121.999 C39.000,157.500 91.000,128.500 104.000,160.999 C117.000,193.500 141.000,201.000 150.000,183.000 C159.000,165.000 172.000,99.000 167.000,87.000 C162.000,75.000 170.000,63.000 152.000,45.000 C134.000,27.000 128.000,15.999 116.000,11.000 C104.000,6.000 89.000,-0.001 89.000,-0.001 L39.000,31.999 Z" />
@@ -349,10 +415,10 @@
                 <div class="col-md-4">
                     <div class="single-pricing text-center" data-aos="fade-up" data-aos-delay="300"
                         data-aos-duration="600">
-                        <h2>Roma</h2>
+                        <h2><fmt:message key="meta2" bundle="${resourceBundle}"/></h2>
                         <p><img src="images/roma.jpg" width=350px><br><br>
-                        Quale miglior città se non Roma per scoprire la storia della nostra Italia</p>
-                         <a href="https://it.wikipedia.org/wiki/Roma" class="btn btn-primary">Info</a>
+                        <fmt:message key="desc2" bundle="${resourceBundle}"/></p>
+                         <a href="https://it.wikipedia.org/wiki/Roma" class="btn btn-primary"><fmt:message key="info" bundle="${resourceBundle}"/></a>
                         <svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd" fill="rgb(238, 21, 21)"
                                 d="M39.000,31.999 C39.000,31.999 -21.000,86.500 9.000,121.999 C39.000,157.500 91.000,128.500 104.000,160.999 C117.000,193.500 141.000,201.000 150.000,183.000 C159.000,165.000 172.000,99.000 167.000,87.000 C162.000,75.000 170.000,63.000 152.000,45.000 C134.000,27.000 128.000,15.999 116.000,11.000 C104.000,6.000 89.000,-0.001 89.000,-0.001 L39.000,31.999 Z" />
@@ -362,10 +428,10 @@
                 <div class="col-md-4">
                     <div class="single-pricing text-center" data-aos="fade-up" data-aos-delay="600"
                         data-aos-duration="600">
-                        <h2>Venezia</h2>
+                        <h2><fmt:message key="meta3" bundle="${resourceBundle}"/></h2>
                         <p><img src="images/venecia.jpg" width=350px> <br><br>
-                        Spostarsi con la gondola è il modo migliore per rilassarsi e godersi il panorama</p>
-                        <a href="https://it.wikipedia.org/wiki/Venezia" class="btn btn-primary">Info</a>
+                        <fmt:message key="desc3" bundle="${resourceBundle}"/></p>
+                        <a href="https://it.wikipedia.org/wiki/Venezia" class="btn btn-primary"><fmt:message key="info" bundle="${resourceBundle}"/></a>
                         <svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd" fill="rgb(238, 21, 21)"
                                 d="M39.000,31.999 C39.000,31.999 -21.000,86.500 9.000,121.999 C39.000,157.500 91.000,128.500 104.000,160.999 C117.000,193.500 141.000,201.000 150.000,183.000 C159.000,165.000 172.000,99.000 167.000,87.000 C162.000,75.000 170.000,63.000 152.000,45.000 C134.000,27.000 128.000,15.999 116.000,11.000 C104.000,6.000 89.000,-0.001 89.000,-0.001 L39.000,31.999 Z" />
@@ -388,14 +454,11 @@
                                     <div class="test-img" data-aos="fade-up" data-aos-delay="0" data-aos-offset="0"><img
                                             src="images/agnese.jpg" alt="Testimonial 1"></div>
                                     <h5 data-aos="fade-up" data-aos-delay="200" data-aos-duration="600"
-                                        data-aos-offset="0">Fiorentino Agnese</h5>
+                                        data-aos-offset="0"><fmt:message key="agnese" bundle="${resourceBundle}"/></h5>
                                     <span data-aos="fade-up" data-aos-delay="400" data-aos-duration="600"
-                                        data-aos-offset="0">Addetta al marketing/
-                                        Socia</span>
+                                        data-aos-offset="0"><fmt:message key="mansione1" bundle="${resourceBundle}"/></span>
                                     <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="600"
-                                        data-aos-offset="0">Lei ha la tecnica giusta per vendere
-                                        qualsiasi cosa, riesce a promuovere ogni località d'Italia dando
-                                        vita alle loro caratteristiche riuscendo ad esaltarle</p>
+                                        data-aos-offset="0"><fmt:message key="agneseD" bundle="${resourceBundle}"/></p>
                                 </div>
                             </div>
                         </div>
@@ -405,14 +468,11 @@
                                     <div class="test-img" data-aos="fade-up" data-aos-delay="0" data-aos-offset="0"><img
                                             src="images/matteo.jpg" alt="Testimonial 1"></div>
                                     <h5 data-aos="fade-up" data-aos-delay="200" data-aos-duration="600"
-                                        data-aos-offset="0">Corsano Matteo</h5>
+                                        data-aos-offset="0"><fmt:message key="matteo" bundle="${resourceBundle}"/></h5>
                                     <span data-aos="fade-up" data-aos-delay="400" data-aos-duration="600"
-                                        data-aos-offset="0"> Sviluppatore sito web/
-                                        Socio</span>
+                                        data-aos-offset="0"> <fmt:message key="mansione2" bundle="${resourceBundle}"/></span>
                                     <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="600"
-                                        data-aos-offset="0">Il mago del computer, si occupa della gestione del sito
-                                        web. Lui l'ha creato, lui lo gestisce ed è lui che lo aggiorna, tutto questo
-                                        in grandissima velocità ma soprattutto professionalità</p>
+                                        data-aos-offset="0"><fmt:message key="matteoD" bundle="${resourceBundle}"/></p>
                                 </div>
                             </div>
                         </div>
@@ -422,14 +482,11 @@
                                     <div class="test-img" data-aos="fade-up" data-aos-delay="0" data-aos-offset="0"><img
                                             src="images/dema.jpg" alt="Testimonial 1"></div>
                                     <h5 data-aos="fade-up" data-aos-delay="200" data-aos-duration="600"
-                                        data-aos-offset="0">De Mastrangelo Antonio</h5>
+                                        data-aos-offset="0"><fmt:message key="dema" bundle="${resourceBundle}"/></h5>
                                     <span data-aos="fade-up" data-aos-delay="400" data-aos-duration="600"
-                                        data-aos-offset="0">Consulente finanziario/
-                                        Socio</span>
+                                        data-aos-offset="0"><fmt:message key="mansione3" bundle="${resourceBundle}"/></span>
                                     <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="600"
-                                        data-aos-offset="0">Gestissce le finanze dell'azienda, le sue entrate e le uscite
-                                       	ma ha anche voce in capitolo sui prezzi dei viaggi, infatti trova i modi migliori per
-                                       	far risparmiare al cliente senza che l'azienda ci rimetta</p>
+                                        data-aos-offset="0"><fmt:message key="demaD" bundle="${resourceBundle}"/></p>
                                 </div>
                             </div>
                         </div>
@@ -439,14 +496,11 @@
                                     <div class="test-img" data-aos="fade-up" data-aos-delay="0" data-aos-offset="0"><img
                                             src="images/minerba.jpg alt="Testimonial 1"></div>
                                     <h5 data-aos="fade-up" data-aos-delay="200" data-aos-duration="600"
-                                        data-aos-offset="0">Minerba Francesco</h5>
+                                        data-aos-offset="0"><fmt:message key="francesco" bundle="${resourceBundle}"/></h5>
                                     <span data-aos="fade-up" data-aos-delay="400" data-aos-duration="600"
-                                        data-aos-offset="0">Consulente viaggi/
-                                        Socio</span>
+                                        data-aos-offset="0"><fmt:message key="mansione4" bundle="${resourceBundle}"/></span>
                                     <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="600"
-                                        data-aos-offset="0">Sa consigliare il posto giusto per la giusta occasione,
-                                        se non sapete come passare le vacanze o dove festeggiare la luna di miele,
-                                        chiedete a lui e vi consiglierà il miglior posto in base alle vostre esigenze </p>
+                                        data-aos-offset="0"><fmt:message key="francescoD" bundle="${resourceBundle}"/> </p>
                                 </div>
                             </div>
                         </div>
@@ -484,11 +538,11 @@
         <div class="container">
             <div class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
                 <div class="content" data-aos="fade-right" data-aos-delay="200">
-                   <h2>ENTRA NELLA NOSTRA NEWSLETTER</h2>
-                    <p>Iscriviti per rimanere aggiornato su tutte le novità della nostra agenzia.</p>
+                   <h2><fmt:message key="new1" bundle="${resourceBundle}"/></h2>
+                    <p><fmt:message key="new2" bundle="${resourceBundle}"/></p>
                 </div>
                 <div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400" data-aos-offset="0">
-                    <a href="#" class="btn btn-primary">Join Newsletter</a>
+                    <a href="#" class="btn btn-primary"><fmt:message key="new3" bundle="${resourceBundle}"/></a>
                 </div>
             </div>
         </div>
@@ -504,13 +558,13 @@
                     <div class="col-md-6 col-xl-3">
                         <div class="single-widget contact-widget" data-aos="fade-up" data-aos-delay="0">
                             <h6 class="widget-tiltle">&nbsp;</h6>
-                            <p>Potete trovare la lista dei nostri contatti, dove possiamo rispondere a qualsiasi vostra richiesta
+                            <p><fmt:message key="nomeContatti" bundle="${resourceBundle}"/>
                             </p>
                              
                             <div class="media">
                                 <i class="fa fa-map-marker"></i>
                                 <div class="media-body ml-3">
-                                    <h6>Indirizzo</h6>
+                                    <h6><fmt:message key="indirizzo" bundle="${resourceBundle}"/></h6>
                                     Via Alto Adige 37<br>
                                     Casarano, Lecce, 73042 Italia
                                 </div>
@@ -518,14 +572,14 @@
                              <div class="media">
                                 <i class="fa fa-envelope-o"></i>
                                 <div class="media-body ml-3">
-                                    <h6>Hai una domanda? Invia una emal a </h6>
+                                    <h6><fmt:message key="email" bundle="${resourceBundle}"/> </h6>
                                     <a href="mailto:support@steelthemes.com">info@fama.com</a>
                                 </div>
                              </div>
                             <div class="media">
                                 <i class="fa fa-phone"></i>
                                 <div class="media-body ml-3">
-                                    <h6>Puoi chiamarci al <a href="tel:+610791803458"> 0833/524787</a></h6>
+                                    <h6><fmt:message key="numero" bundle="${resourceBundle}"/> <a href="tel:+610791803458"> 0833/524787</a></h6>
                                     
                                 </div>
                              </div>

@@ -1,5 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" import="java.util.Locale" import="org.apache.tomcat.jni.Local" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%!
+	String locale;
+ %>
+ <%
+   locale = (String)application.getAttribute("LOCALE_KEY");
+ %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +46,8 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
+  <fmt:setLocale value="<%=locale%>"/>		
+  <fmt:setBundle basename="it.meucci.bundle.messages" var="resourceBundle"/> 	
 	<div class="limiter">
 		<div class="container-login100"
 			style="background-image: url('login/images/bg-01.jpg');">
@@ -46,7 +56,7 @@
 					method="post">
 					<span class="login100-form-logo"> <i
 						class="zmdi zmdi-landscape"></i>
-					</span> <span class="login100-form-title p-b-34 p-t-27"> Log in </span>
+					</span> <span class="login100-form-title p-b-34 p-t-27"> <fmt:message key="loginBtn" bundle="${resourceBundle}"/> </span>
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Enter username">
