@@ -281,7 +281,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <a href="#" class="btn btn-primary">Prenota</a>
+                <a href="prenotazione.jsp" class="btn btn-primary">Prenota</a>
             </div>
         </div>
     </section>

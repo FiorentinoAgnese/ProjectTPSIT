@@ -45,12 +45,21 @@ public class LoginServlet extends HttpServlet {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
+		ArrayList regioni = new ArrayList();
+		ArrayList province = new ArrayList();
 		try {
 			DBManager db = new DBManager();
 			ArrayList<Utente> utenti = new ArrayList<Utente>();
 
 			if (db.controllaCredenziali(username, password) == true) {
+				province = db.getPartenza();
+				regioni = db.getRegione();
 				request.getSession().setAttribute("SESSION_UTENTE", username);
+				request.getSession().setAttribute("SESSION_REGIONI", regioni);
+				request.getSession().setAttribute("SESSION_PROVINCE", province);
+				System.out.println(regioni);
+				System.out.println(province);
+				// request.getSession().setAttribute("SESSION_UTENTE", username);
 				response.sendRedirect("home.jsp");
 			} else
 				response.sendRedirect("login.jsp");

@@ -82,6 +82,44 @@ public class DBManager {
 		return id;
 	}
 
+	public ArrayList getPartenza() throws Exception {
+		String sql = "SELECT DISTINCT NomeCitta FROM luogo ORDER BY 1";
+		rs = query.executeQuery(sql);
+		ArrayList luoghi = new ArrayList();
+		String l = "";
+		while (rs.next()) {
+			l = rs.getString(1);
+			luoghi.add(l);
+		}
+		return luoghi;
+
+	}
+
+	public ArrayList getRegione() throws Exception {
+		String sql = "SELECT DISTINCT NomeRegione FROM luogo ORDER BY 1";
+		rs = query.executeQuery(sql);
+		ArrayList luoghi = new ArrayList();
+		String l = "";
+		while (rs.next()) {
+			l = rs.getString(1);
+			luoghi.add(l);
+		}
+		return luoghi;
+
+	}
+
+	public ArrayList getProvincia(String regione) throws Exception {
+		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo WHERE NomeRegione='" + regione + "';";
+		rs = query.executeQuery(sql);
+		ArrayList provincia = new ArrayList();
+		String l = "";
+		while (rs.next()) {
+			l = rs.getString(1);
+			provincia.add(l);
+		}
+		return provincia;
+	}
+
 	public void registrazioneUtente(Utente u) throws Exception {
 		String sqlInsert = "INSERT INTO utente VALUES (?,?,?,?,?,?,?,?,?);";
 		PreparedStatement pstm;
@@ -119,12 +157,10 @@ public class DBManager {
 
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
-		// System.out.println(db.controllaCredenziali("Maria", "rosa"));
-		int id = db.idUtente() + 1;
+		System.out.println(db.getPartenza());
+		System.out.println(db.getRegione());
+		System.out.println(db.getProvincia("Puglia"));
 
-		Utente u = new Utente(id, "Lol", "pASS", "Lkl", "Lol", "2021-01-01", "33333", "c@CICE.COM", false);
-		db.registrazioneUtente(u);
-		System.out.println(db.idUtente());
 	}
 
 }

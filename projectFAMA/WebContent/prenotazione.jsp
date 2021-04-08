@@ -1,5 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@page import="projectFAMA.DBManager"%>
+<%@ page language="java" import="java.util.ArrayList"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%!ArrayList luoghi;
+	ArrayList regioni;
+	int i;
+	String regione;
+	String provincia;
+	DBManager db;
+	String prov;
+	ArrayList p;%>
+<%
+regioni = (ArrayList) session.getAttribute("SESSION_REGIONI");
+luoghi = (ArrayList) session.getAttribute("SESSION_PROVINCE");
+db = new DBManager();
+%>
 
 <!doctype html>
 <html lang="en">
@@ -158,62 +173,55 @@
 				<h1 class="title-blue">Scegli la tua meta</h1>
 			</div>
 			<div class="container">
-				<table style="width:100%" height="500%" class="single-pricing text-center" data-aos="fade-up"
-						data-aos-delay="0" data-aos-duration="6000">
+				<table style="width: 100%" height="500%"
+					class="single-pricing text-center" data-aos="fade-up"
+					data-aos-delay="0" data-aos-duration="6000">
 					<tr>
 						<th><h3>Partenza</h3></th>
-						<th> <select name="partenze">
-                                <option value="1">romanella</option>
-                                <option value="2">romina</option>
-                                <option value="3">romina</option>
-                                </select></th>
+						<th><select name="partenze">
+								<%
+								for (i = 0; i < luoghi.size(); i++) {
+									provincia = (String) luoghi.get(i);
+								%>
+								<option value="<%=provincia%>"><%=provincia%></option>
+								<%
+								}
+								%>
+						</select></th>
 					</tr>
 					<tr>
 						<td><h3>Data Partenza</h3></td>
-						<td> <select name="partenze">
-                                <option value="1">roma</option>
-                                <option value="2">romina</option>
-                                <option value="3">romina</option>
-                                </select></td>
-						
+						<td><input class="input100" type="date" value="dataP"></td>
+
 					</tr>
 					<tr>
 						<td><h3>Data Arrivo</h3></td>
-						<td> <select name="partenze">
-                                <option value="1">roma</option>
-                                <option value="2">romina</option>
-                                <option value="3">romina</option>
-                                </select></td>
-						
+						<td><input class="input100" type="date" value="dataA"></td>
+
 					</tr>
 				</table>
-				<table style="width: 100%" style="height: 80%" class="single-pricing text-center" data-aos="fade-up"
-						data-aos-delay="0" data-aos-duration="600">
+				<table style="width: 100%" style="height: 80%"
+					class="single-pricing text-center" data-aos="fade-up"
+					data-aos-delay="0" data-aos-duration="600">
 					<tr>
 						<td><h3>Regione</h3></td>
-						<td> <select name="partenze">
-                                <option value="1">Puglia</option>
-                                <option value="2">romina</option>
-                                <option value="3">romina</option>
-                                </select></td>
-						
+						<td><select name="partenze">
+								<%
+								for (i = 0; i < regioni.size(); i++) {
+									regione = (String) regioni.get(i);
+								%>
+								<option value="<%=regione%>"><%=regione%></option>
+								<%
+								}
+								%>
+						</select></td>
+
 					</tr>
-	
-					<tr>
-					<th><input type="checkbox" value="Bari"><h3>Bari</h3></th>
-					<th><input type="checkbox" value="Bari"><h3>Foggia</h3></th>
-                    <th><input type="checkbox" value="Bari"><h3>Lecce</h3></th>
-                    </tr>
-                    
-                    <tr>
-					<th><input type="checkbox" value="Bari">Taranto</th>
-					<th><input type="checkbox" value="Bari">Bat</th>
-                    <th><input type="checkbox" value="Bari">Brindisi</th>
-                    </tr>
-                   
-				</table> <br>
-				 <a href="#servizi" data-aos="fade-right" data-aos-delay="900"
-								href="#" class="btn btn-primary"> Cerca</a>
+
+				
+				</table>
+				<br> <a href="#servizi" data-aos="fade-right"
+					data-aos-delay="900" href="GestioneHotelServlet?comando=cerca" class="btn btn-primary"> Cerca</a>
 			</div>
 			<!-- <div class="container">
                 <div class="row">
@@ -354,7 +362,7 @@
     </section>-->
 	<!-- Recent Posts End -->
 	<!-- Trust Start -->
-	
+
 	<!-- Trust End -->
 	<!-- Pricing Start -->
 	<section class="pricing-table" id="mete">
@@ -369,9 +377,9 @@
 						data-aos-delay="0" data-aos-duration="600">
 						<h2>Firenze</h2>
 						<p>
-							<img src="images/firenze.jpg" width=350px><br>
-							<br> Se sei un appassionato di arte e cultura, Firenze è la
-							città perfetta per te
+							<img src="images/firenze.jpg" width=350px><br> <br>
+							Se sei un appassionato di arte e cultura, Firenze è la città
+							perfetta per te
 						</p>
 						<a href="https://it.wikipedia.org/wiki/Firenze"
 							class="btn btn-primary">Vedi pacchetto</a>
@@ -387,9 +395,9 @@
 						data-aos-delay="300" data-aos-duration="600">
 						<h2>Roma</h2>
 						<p>
-							<img src="images/roma.jpg" width=350px><br>
-							<br> Quale miglior città se non Roma per scoprire la storia
-							della nostra Italia
+							<img src="images/roma.jpg" width=350px><br> <br>
+							Quale miglior città se non Roma per scoprire la storia della
+							nostra Italia
 						</p>
 						<a href="https://it.wikipedia.org/wiki/Roma"
 							class="btn btn-primary">Vedi Pacchetto</a>
@@ -405,9 +413,9 @@
 						data-aos-delay="600" data-aos-duration="600">
 						<h2>Venezia</h2>
 						<p>
-							<img src="images/venecia.jpg" width=350px> <br>
-							<br> Spostarsi con la gondola è il modo migliore per
-							rilassarsi e godersi il panorama
+							<img src="images/venecia.jpg" width=350px> <br> <br>
+							Spostarsi con la gondola è il modo migliore per rilassarsi e
+							godersi il panorama
 						</p>
 						<a href="https://it.wikipedia.org/wiki/Venezia"
 							class="btn btn-primary">Vedi Pacchetto</a>
@@ -427,12 +435,12 @@
 				<div class="offset-xl-1 col-xl-6" data-aos="fade-right"
 					data-aos-delay="200" data-aos-duration="800">
 					<div class="title">
-					<h1>Lascia un commento</h1>
-							<input type="text" name="name" id="name" placeholder="Nome" />
-							<input type="text" name="message" id="message" placeholder="Messaggio" /><br>
-								<input type="submit" class="primary" value="Invia Messaggio" />
-								<input type="reset" value="Resetta commento" />
-						
+						<h1>Lascia un commento</h1>
+						<input type="text" name="name" id="name" placeholder="Nome" /> <input
+							type="text" name="message" id="message" placeholder="Messaggio" /><br>
+						<input type="submit" class="primary" value="Invia Messaggio" /> <input
+							type="reset" value="Resetta commento" />
+
 					</div>
 				</div>
 				<div class="col-xl-5 gallery">
@@ -461,13 +469,13 @@
 	<!-- Pricing End -->
 	<!-- Testimonial and Clients Start -->
 	<div class="title text-center">
-				<h6 class="title-primary">feedback</h6>
-				<h1 class="title-blue">Ciò che pensano di noi</h1>
-			</div>
+		<h6 class="title-primary">feedback</h6>
+		<h1 class="title-blue">Ciò che pensano di noi</h1>
+	</div>
 	<section class="testimonial-and-clients" id="people">
 		<div class="container">
 			<div class="testimonials">
-			
+
 				<div class="swiper-container test-slider">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide text-center">
