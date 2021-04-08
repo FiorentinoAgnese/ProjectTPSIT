@@ -107,6 +107,19 @@ public class DBManager {
 		return luoghi;
 
 	}
+	public ArrayList<Hotel> getHotel(int luogo) throws Exception{
+		ArrayList<Hotel> elenco =new ArrayList<Hotel>();
+		String sql="SELECT hotel.Nome FROM `hotel`, luogo WHERE luogo.IdLuogo=hotel.IdLuogo AND hotel.IdLuogo="+luogo+";";
+		rs = query.executeQuery(sql);
+		Hotel h;
+		while (rs.next()) {
+			h= new Hotel(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
+				elenco.add(h);
+			}
+			System.out.println("Hotel visualizzati: "+ elenco.size());
+			
+			return elenco;
+		}
 
 	public ArrayList getProvincia(String regione) throws Exception {
 		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo WHERE NomeRegione='" + regione + "';";
