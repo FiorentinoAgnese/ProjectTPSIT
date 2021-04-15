@@ -64,17 +64,6 @@ db = new DBManager();
 				</nav>
 			</div>
 			<nav class="navbar navbar-expand-md navbar-light">
-				<!-- <a class="navbar-brand" href="index.html"><img src="" alt="Multipurpose"></a>-->
-				<!--<div class="group d-flex align-items-center">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span
-                            class="navbar-toggler-icon"></span></button>
-                    <a class="login-icon d-sm-none" href="login/index.html"><i class="fa fa-user"></i></a>
-                    <a class="login-icon d-sm-none" href="login/index.htm"><i class="fa fa-user"></i></a>
-                    <a class="cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-                <a class="search-icon d-none d-md-block" href="#"><i class="fa fa-search"></i></a>-->
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarSupportedContent">
 					<ul class="navbar-nav">
@@ -118,54 +107,15 @@ db = new DBManager();
 							</p>
 							<a href="#servizi" data-aos="fade-right" data-aos-delay="900"
 								href="#" class="btn btn-primary"> Inizia</a>
-							<!--<a href="login/index.html" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">Travel
-                                        Now</a>-->
 						</div>
 					</div>
-					<!--  <div class="swiper-slide slide-content d-flex align-items-center">
-                                <div class="single-slide">
-                                    <h1 data-aos="fade-right" data-aos-delay="200">Viaggia<br> Con noi
-                                    </h1>
-                                    <p data-aos="fade-right" data-aos-delay="600">Nel nostro roster abbiamo le migliori
-                                        location.
-                                        <br> 
-                                        Cosa aspetti?
-                                    </p>
-                                    <a href="login/index.html" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">See
-                                        More</a>
-                                    <a href="login/index.html" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">Travel
-                                        Now</a>
-                                </div>
-                            </div>-->
-					<!-- </div> -->
 
-					<!-- </div> -->
 				</div>
 			</div>
-			<!-- Add Control 
-            <span class="arr-left"><i class="fa fa-angle-left"></i></span>
-            <span class="arr-right"><i class="fa fa-angle-right"></i></span>-->
 		</div>
 		<div class="texture"></div>
 		<div class="diag-bg"></div>
 	</section>
-	<!-- Hero End -->
-	<!-- Call To Action Start -->
-	<!--<section class="cta" data-aos="fade-up" data-aos-delay="0">
-        <div class="container">
-            <div class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
-                <div class="content" data-aos="fade-right" data-aos-delay="200">
-                    <h2>ENTRA NELLA NOSTRA NEWSLETTER</h2>
-                    <p>Iscriviti per rimanere aggiornato su tutte le novità della nostra agenzia.</p>
-                </div>
-                <div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400" data-aos-offset="0">
-                    <a href="#" class="btn btn-primary">Join Newsletter</a>
-                </div>
-            </div>
-        </div>
-    </section>-->
-	<!-- Call To Action End -->
-	<!-- Services Start -->
 	<section class="services" id="servizi">
 		<div class="container">
 			<div class="title text-center">
@@ -217,47 +167,29 @@ db = new DBManager();
 						</select></td>
 
 					</tr>
+					<tr>
+						<td>
+						<td><h3>Destinazione</h3></td>
+						<%
+						p = db.getProvincia(regione);
+						for (i = 0; i < p.size(); i++) {
+							provincia = (String) p.get(i);
+						%>
+						<input type="checkbox" value="<%=provincia%>"><%=provincia%>
+						<%
+						}
+						%>
 
-				
+
+						</td>
+					</tr>
+
+
 				</table>
 				<br> <a href="#servizi" data-aos="fade-right"
-					data-aos-delay="900" href="GestioneHotelServlet?comando=cerca" class="btn btn-primary"> Cerca</a>
+					data-aos-delay="900" href="GestioneHotelServlet?comando=cerca"
+					class="btn btn-primary"> Cerca</a>
 			</div>
-			<!-- <div class="container">
-                <div class="row">
-                    <!--<div class="col-sm-6 col-lg-4">
-                        <div class="media" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
-                            <img class="mr-4" src="assets/images/service1.png" alt="Web Development">
-                            <div class="media-body">
-                                <h5>Partenza</h5>
-                                <select name="partenze">
-                                <option value="1">roma</option>
-                                <option value="2">romina</option>
-                                <option value="3">romina</option>
-                                </select> <br>
-                            </div>
-                       </div>
-                    <!--</div>-->
-			<!--<div class="col-sm-6 col-lg-4">
-                        <br><div class="media" data-aos="fade-up" data-aos-delay="400" data-aos-duration="600">
-                            <img class="mr-4" src="assets/images/service2.png" alt="Web Development">
-                            <div class="media-body">
-                             <h5>Ricerca Intuitiva</h5>
-                                Il nostro sito è sviluppato per dar modo al cliente di trovare subito
-                                ciò di cui ha bisogno.
-                            </div>
-                        </div>
-                    <!--</div>-->
-			<!--<div class="col-sm-6 col-lg-4">
-                        <div class="media" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
-                            <img class="mr-4" src="assets/images/service3.png" alt="Web Development">
-                            <div class="media-body">
-                            <h5>Ricerca Intuitiva</h5>
-                                Il nostro sito è sviluppato per dar modo al cliente di trovare subito
-                                ciò di cui ha bisogno.
-                            </div>
-                        </div>
-                    <!--</div>-->
 			<!--<div class="col-sm-6 col-lg-4">
                         <div class="media" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                             <img class="mr-4" src="assets/images/service4.png" alt="Web Development">
@@ -568,29 +500,6 @@ db = new DBManager();
 					<div class="test-pagination"></div>
 				</div>
 			</div>
-			<!--   <div class="clients" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">
-                <div class="swiper-container clients-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="assets/images/client1.png" alt="Client 1">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client2.png" alt="Client 2">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client3.png" alt="Client 3">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client4.png" alt="Client 4">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client5.png" alt="Client 5">
-                        </div>
-                    </div>
-                    <div class="test-pagination"></div>
-                </div>
-            </div>
-        </div>-->
 	</section>
 	<!-- Testimonial and Clients End -->
 	<!-- Call To Action 2 Start -->
