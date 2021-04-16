@@ -15,7 +15,7 @@
         driver="com.mysql.jdbc.Driver"<font></font>
         url="jdbc:mysql://localhost:3306/fama?serverTimezone=UTC"<font></font>
         user="root" password="admin"<font></font> />
-    <font></font>
+    
     <font></font>
     <sql:query var="listHotel"   dataSource="${myDS}"><font></font>
         SELECT * FROM hotel;<font></font>
