@@ -15,52 +15,55 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/GestioneHotelServlet")
 public class GestioneHotelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GestioneHotelServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String comando = request.getParameter("cmd");
-		int id;
-		System.out.println("Servlet: ");
-		if (comando.equals("cerca")) {
-			id = Integer.parseInt(request.getParameter("id"));
-			DBManager db;
-			ArrayList<Hotel> elenco = (ArrayList<Hotel>) request.getSession().getAttribute("ELENCO_HOTEL");
-			Hotel h;
-			for (int i = 0; i < elenco.size(); i++) {
-				h = (Hotel) elenco.get(i);
-				if (h.getIdHotel() == id) {
-					request.getSession().setAttribute("HOTEL_SESSIONE", h);
-					response.sendRedirect("Hotel.jsp");
-					break;
-				}
-			}
-
-		}
-		
+	public GestioneHotelServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		System.out.println("Servlet: ");
+		ArrayList<Integer> id = new ArrayList<Integer>();
+		int idd;
+		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
+		String[] destinazione = request.getParameterValues("province");
+		System.out.println(destinazione);
+		DBManager db;
+		try {
+			db = new DBManager();
+			for (int i = 0; i < destinazione.length; i++) {
+				idd = db.getIdProvincia(destinazione[i]);
+				id.add(idd);
+				System.out.println("Id: " + id);
+				elenco = db.getHotel(id.get(i));
+				System.out.println(elenco.get(i));
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		request.getSession().setAttribute("IDLUOGO_SESSIONE", id);
+		request.getSession().setAttribute("HOTEL_SESSIONE", elenco);
+		response.sendRedirect("hotel.jsp");
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		
-		
-		
-		
+
 	}
 
 }

@@ -95,6 +95,17 @@ public class DBManager {
 
 	}
 
+	public Integer getIdProvincia(String prov) throws Exception {
+		String sql = "SELECT IdLuogo FROM luogo WHERE NomeCitta='" + prov + "';";
+		rs = query.executeQuery(sql);
+		Integer id = 0;
+		while (rs.next()) {
+			id = rs.getInt(1);
+
+		}
+		return id;
+	}
+
 	public ArrayList getRegione() throws Exception {
 		String sql = "SELECT DISTINCT NomeRegione FROM luogo ORDER BY 1";
 		rs = query.executeQuery(sql);
@@ -108,10 +119,21 @@ public class DBManager {
 
 	}
 
+	public String getImmagini(int id) throws Exception {
+		ArrayList imm = new ArrayList();
+		String sql = "SELECT img FROM luogo WHERE IdLuogo='" + id + "';";
+		rs = query.executeQuery(sql);
+		String im = "";
+		while (rs.next()) {
+			im = rs.getString(1);
+			// imm.add(im);
+		}
+		return im;
+	}
+
 	public ArrayList<Hotel> getHotel(int luogo) throws Exception {
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
-		String sql = "SELECT hotel.Nome FROM `hotel`, luogo WHERE luogo.IdLuogo=hotel.IdLuogo AND hotel.IdLuogo="
-				+ luogo + ";";
+		String sql = "SELECT * FROM hotel, luogo WHERE luogo.IdLuogo=hotel.IdLuogo AND hotel.IdLuogo='" + luogo + "';";
 		rs = query.executeQuery(sql);
 		Hotel h;
 		while (rs.next()) {
@@ -124,8 +146,19 @@ public class DBManager {
 		return elenco;
 	}
 
-	public ArrayList getProvincia(String regione) throws Exception {
-		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo WHERE NomeRegione='" + regione + "';";
+	public String getImmaginiHotel(int id) throws Exception {
+		String sql = "SELECT hotel.img FROM hotel WHERE hotel.IdLuogo='" + id + "';";
+		rs = query.executeQuery(sql);
+		String im = "";
+		while (rs.next()) {
+			im = rs.getString(1);
+			// imm.add(im);
+		}
+		return im;
+	}
+
+	public ArrayList getProvincia() throws Exception {
+		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo ORDER BY 1";
 		rs = query.executeQuery(sql);
 		ArrayList provincia = new ArrayList();
 		String l = "";
@@ -136,8 +169,8 @@ public class DBManager {
 		return provincia;
 	}
 
-	public ArrayList getProvincia() throws Exception {
-		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo ORDER BY 1";
+	public ArrayList getProvincia(String regione) throws Exception {
+		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo WHERE NomeRegione='" + regione + "';";
 		rs = query.executeQuery(sql);
 		ArrayList provincia = new ArrayList();
 		String l = "";
@@ -185,9 +218,9 @@ public class DBManager {
 
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
-		System.out.println(db.getPartenza());
-		System.out.println(db.getRegione());
-		System.out.println(db.getProvincia("Puglia"));
+		System.out.println();
+		Hotel h;
+		int id;
 
 	}
 

@@ -1,3 +1,4 @@
+
 <%@page import="projectFAMA.DBManager"%>
 <%@ page language="java" import="java.util.ArrayList"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -9,7 +10,8 @@
 	String provincia;
 	DBManager db;
 	String prov;
-	ArrayList p;%>
+	ArrayList p;
+	ArrayList imm;%>
 <%
 regioni = (ArrayList) session.getAttribute("SESSION_REGIONI");
 luoghi = (ArrayList) session.getAttribute("SESSION_PROVINCE");
@@ -36,6 +38,11 @@ db = new DBManager();
 <link rel="stylesheet" href="assets/css/lightgallery.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
+<script>
+	function reload() {
+		window.location.reload();
+	}
+</script>
 </head>
 
 <body>
@@ -48,8 +55,7 @@ db = new DBManager();
 			<div
 				class="top-header d-none d-sm-flex justify-content-between align-items-center">
 				<div class="contact">
-					<!-- <a href="mailto:FAMA@gmail.com"><i class="fa fa-envelope"
-                            aria-hidden="true"></i></a>-->
+
 					<img src=>
 				</div>
 				<nav class="d-flex aic">
@@ -64,6 +70,7 @@ db = new DBManager();
 				</nav>
 			</div>
 			<nav class="navbar navbar-expand-md navbar-light">
+
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarSupportedContent">
 					<ul class="navbar-nav">
@@ -107,191 +114,100 @@ db = new DBManager();
 							</p>
 							<a href="#servizi" data-aos="fade-right" data-aos-delay="900"
 								href="#" class="btn btn-primary"> Inizia</a>
+							<!--<a href="login/index.html" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">Travel
+                                        Now</a>-->
 						</div>
 					</div>
 
 				</div>
 			</div>
+
 		</div>
 		<div class="texture"></div>
 		<div class="diag-bg"></div>
 	</section>
+	<!-- Hero End -->
+	<!-- Call To Action Start -->
+
+	<!-- Call To Action End -->
+	<!-- Services Start -->
 	<section class="services" id="servizi">
 		<div class="container">
 			<div class="title text-center">
 				<h6 class="title-primary">Agenzia FAMA</h6>
 				<h1 class="title-blue">Scegli la tua meta</h1>
 			</div>
-			<div class="container">
-				<table style="width: 100%" height="500%"
-					class="single-pricing text-center" data-aos="fade-up"
-					data-aos-delay="0" data-aos-duration="6000">
-					<tr>
-						<th><h3>Partenza</h3></th>
-						<th><select name="partenze">
-								<%
-								for (i = 0; i < luoghi.size(); i++) {
-									provincia = (String) luoghi.get(i);
-								%>
-								<option value="<%=provincia%>"><%=provincia%></option>
-								<%
-								}
-								%>
-						</select></th>
-					</tr>
-					<tr>
-						<td><h3>Data Partenza</h3></td>
-						<td><input class="input100" type="date" value="dataP"></td>
+			<form action="GestioneDestinazioni" method="get">
+				<div class="container">
+					<table style="width: 100%" height="500%"
+						class="single-pricing text-center" data-aos="fade-up"
+						data-aos-delay="0" data-aos-duration="6000">
+						<tr>
+							<th><h3>Partenza</h3></th>
+							<th><select name="partenze">
+									<%
+									for (i = 0; i < luoghi.size(); i++) {
+										provincia = (String) luoghi.get(i);
+									%>
+									<option value="<%=provincia%>"><%=provincia%></option>
+									<%
+									}
+									%>
 
-					</tr>
-					<tr>
-						<td><h3>Data Arrivo</h3></td>
-						<td><input class="input100" type="date" value="dataA"></td>
+							</select></th>
+						</tr>
+						<tr>
+							<td><h3>Data Partenza</h3></td>
+							<td><input class="input100" type="date" name="dataP"></td>
 
-					</tr>
-				</table>
-				<table style="width: 100%" style="height: 80%"
-					class="single-pricing text-center" data-aos="fade-up"
-					data-aos-delay="0" data-aos-duration="600">
-					<tr>
-						<td><h3>Regione</h3></td>
-						<td><select name="partenze">
-								<%
-								for (i = 0; i < regioni.size(); i++) {
-									regione = (String) regioni.get(i);
-								%>
-								<option value="<%=regione%>"><%=regione%></option>
-								<%
-								}
-								%>
-						</select></td>
-
-					</tr>
-					<tr>
-						<td>
-						<td><h3>Destinazione</h3></td>
-						<%
-						p = db.getProvincia(regione);
-						for (i = 0; i < p.size(); i++) {
-							provincia = (String) p.get(i);
-						%>
-						<input type="checkbox" value="<%=provincia%>"><%=provincia%>
-						<%
-						}
-						%>
+						</tr>
+						<tr>
+							<td><h3>Data Arrivo</h3></td>
+							<td><input class="input100" type="date" name="dataA"></td>
+						</tr>
+						<tr>
+							<td><h3>Mezzo di Trasporto</h3></td>
+							<td><select name="mezzo">
+									<option>Aereo</option>
+									<option>Treno</option>
+									<option>Autobus</option>
+							</select></td>
+						</tr>
 
 
-						</td>
-					</tr>
+						<tr>
+							<td><h3>Regione</h3></td>
+							<td><select name="regione">
+									<%
+									for (i = 0; i < regioni.size(); i++) {
+										regione = (String) regioni.get(i);
+									%>
+									<option value="<%=regione%>"><%=regione%></option>
+									<%
+									}
+									%>
+							</select></td>
+
+						</tr>
 
 
-				</table>
-				<br> <a href="#servizi" data-aos="fade-right"
-					data-aos-delay="900" href="GestioneHotelServlet?comando=cerca"
-					class="btn btn-primary"> Cerca</a>
-			</div>
-			<!--<div class="col-sm-6 col-lg-4">
-                        <div class="media" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
-                            <img class="mr-4" src="assets/images/service4.png" alt="Web Development">
-                            <div class="media-body">
-                               <h5>Ricerca Intuitiva</h5>
-                                Il nostro sito è sviluppato per dar modo al cliente di trovare subito
-                                ciò di cui ha bisogno.
-                            </div>
-                        </div>
-                    <!--</div>-->
-			<!--<div class="col-sm-6 col-lg-4">
-                        <div class="media" data-aos="fade-up" data-aos-delay="400" data-aos-duration="600">
-                            <img class="mr-4" src="assets/images/service1.png" alt="Web Development">
-                            <div class="media-body">
-                               <h5>Ricerca Intuitiva</h5>
-                                Il nostro sito è sviluppato per dar modo al cliente di trovare subito
-                                ciò di cui ha bisogno.
-                            </div>
-                        </div>
-                    <!--</div>-->
-			<!--<div class="col-sm-6 col-lg-4">
-                        <div class="media" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
-                            <img class="mr-4" src="assets/images/service5.png" alt="Web Development">
-                            <div class="media-body">
-                          <h5>Ricerca Intuitiva</h5>
-                                Il nostro sito è sviluppato per dar modo al cliente di trovare subito
-                                ciò di cui ha bisogno.
-                            </div>
-                        </div>
-                    <!--</div>
-                </div>
-            </div>-->
+
+					</table>
+					<table style="width: 100%" style="height: 80%"
+						class="single-pricing text-center" data-aos="fade-up"
+						data-aos-delay="0" data-aos-duration="600">
+
+					</table>
+
+					<button type="submit" data-aos="fade-right" data-aos-delay="900"
+						class="btn btn-primary">Cerca</button>
+
+				</div>
+
+			</form>
 		</div>
 	</section>
-	<!--   <section class="recent-posts">
-        <div class="container">
-         <div class="title text-center">
-               <h6 class="title-primary">Il nostro team</h6>
-                <h1 class="title-blue">Perchè scegliere noi</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-right"
-                        data-aos-duration="800">
-                        <div class="post-content text-sm-right">
-                             <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">I migliori musei italiani</a></h3>
-                            <p>Torino, Firenze, Roma</p>
-                           <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/musei.jpg" alt="Post 1">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-left" data-aos-duration="800">
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/parchiNazionali.jpg" alt="Post 1">
-                        </div>
-                        <div class="post-content">
-                            <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">Tutti i parchi nazionali a disposizione</a></h3>
-                            <p>Aosta, Trento, L'Aquila</p>
-                            <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-right" data-aos-delay="200"
-                        data-aos-duration="800">
-                        <div class="post-content text-sm-right">
-                             <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">Le spiagge più belle solo da noi</a></h3>
-                            <p>Lecce, Genova, Palermo</p>
-                            <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/spiagge.jpg" alt="Post 1">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-left" data-aos-delay="200"
-                        data-aos-duration="800">
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/chiese.jpg" alt="Post 1">
-                        </div>
-                        <div class="post-content">
-                             <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">Le grandi chiese che hanno fatto la storia</a></h3>
-                            <p>Perugia, Firenze, Roma</p>
-                         <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="text-center">
-                <a href="#" class="btn btn-primary">See More</a>
-            </div>
-        </div>
-    </section>-->
+
 	<!-- Recent Posts End -->
 	<!-- Trust Start -->
 
@@ -561,113 +477,6 @@ db = new DBManager();
 							</div>
 						</div>
 		</section>
-		<!--   <div class="col-md-6 col-xl-3">
-                        <div class="single-widget twitter-widget" data-aos="fade-up" data-aos-delay="200">
-                            <h6 class="widget-tiltle">Fresh Tweets</h6>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@Themes,</a> Html Version Out Now</h6>
-                                    <span>10 Mins Ago</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@Envato,</a> the best selling item of the day!</h6>
-                                    <span>20 Mins Ago</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@Collis,</a> We Planned to Update the Enavto Author Payment Method
-                                        Soon!</h6>
-                                    <span>10 Mins Ago</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@SteelThemes,</a> Html Version Out Now</h6>
-                                    <span>15 Mins Ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3">
-                        <div class="single-widget recent-post-widget" data-aos="fade-up" data-aos-delay="400">
-                            <h6 class="widget-tiltle">Latest Updates</h6>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post1.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">An engaging</a></h6>
-                                    <p><i class="fa fa-user"></i>Mano <i class="fa fa-eye"></i> 202 Views</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post2.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">Statistics and analysis. The key to succes.</a></h6>
-                                    <p><i class="fa fa-user"></i>Rosias <i class="fa fa-eye"></i> 20 Views</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post3.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">Envato Meeting turns into a photoshooting.</a></h6>
-                                    <p><i class="fa fa-user"></i>Kien <i class="fa fa-eye"></i> 74 Views</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post4.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">An engaging embedded the video posts</a></h6>
-                                    <p><i class="fa fa-user"></i>Robert <i class="fa fa-eye"></i> 48 Views</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-		<!-- <div class="col-md-6 col-xl-3">
-                        <div class="single-widget tags-widget" data-aos="fade-up" data-aos-delay="800" text-align=right>
-                            <h6 class="widget-tiltle">Popular Tags</h6>
-                            <a href="#">Amazing</a>
-                            <a href="#">Design</a>
-                            <a href="#">Photoshop</a>
-                            <a href="#">Art</a>
-                            <a href="#">Wordpress</a>
-                            <a href="#">jQuery</a>
-                        </div>
-                        <div class="single-widget subscribe-widget" data-aos="fade-up" data-aos-delay="800">
-                            <h6 class="widget-tiltle">Subscribe us</h6>
-                            <p>Sign up for our mailing list to get latest updates and offers</p>
-                            <form class="" method="get">
-                                <div class="input-group">
-                                    <input class="field form-control" name="subscribe" type="email"
-                                        placeholder="Email Address">
-                                    <span class="input-group-btn">
-                                        <button type="submit" name="submit-mail"><i class="fa fa-check"></i></button>
-                                    </span>
-                                </div>
-                            </form>
-                            <p>We respect your privacy</p>
-                            <ul class="nav social-nav">
-                                <li><a href="https://www.facebook.com/fh5co" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Widgets End -->
 		<!-- Foot Note Start -->
 		<div class="foot-note">
 			<div class="container">
