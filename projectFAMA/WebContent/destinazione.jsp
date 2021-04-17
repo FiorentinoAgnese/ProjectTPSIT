@@ -199,7 +199,7 @@ db = new DBManager();
 									<i class="fa fa-envelope-o"></i>
 									<div class="media-body ml-3">
 										<h6>Hai una domanda? Invia una emal a</h6>
-										<a href="mailto:support@steelthemes.com">info@fama.com</a>
+										<a href="mailto:support@steelthemes.com">agencyfama54@gmail.com</a>
 									</div>
 								</div>
 								<div class="media">
