@@ -31,7 +31,7 @@ public class GestioneHotelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("Servlet: ");
+		System.out.println("Servlet hotel");
 		ArrayList<Integer> id = new ArrayList<Integer>();
 		int idd;
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();

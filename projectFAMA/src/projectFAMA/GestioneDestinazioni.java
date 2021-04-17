@@ -34,7 +34,7 @@ public class GestioneDestinazioni extends HttpServlet {
 		ArrayList<Integer> id = new ArrayList<Integer>();
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
 		// System.out.println(comando);
-		System.out.println("Servlet: ");
+		System.out.println("Servlet destinazioni");
 		DBManager db;
 
 		try {
