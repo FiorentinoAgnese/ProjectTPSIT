@@ -62,6 +62,11 @@ public class LoginServlet extends HttpServlet {
 				db.close();
 				response.sendRedirect("home.jsp");
 			} else if (db.controllaCredenziali(username, password) == true && db.getAdmin(username) == true) {
+				province = db.getPartenza();
+				regioni = db.getRegione();
+				request.getSession().setAttribute("SESSION_UTENTE", username);
+				request.getSession().setAttribute("SESSION_REGIONI", regioni);
+				request.getSession().setAttribute("SESSION_PROVINCE", province);
 				response.sendRedirect("menuback.jsp");
 				db.close();
 			} else

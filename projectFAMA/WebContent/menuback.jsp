@@ -18,9 +18,7 @@ user = (String) session.getAttribute("SESSION_UTENTE");
 </head>
 <body>
 
-	<%
-	if (user != null) {
-	%>
+
 
 	<div class="bg-img" style="background-image: url('images/banner2.jpg')">
 		<div class="description">
@@ -29,8 +27,7 @@ user = (String) session.getAttribute("SESSION_UTENTE");
 				<%=user%></h1>
 
 			<!-- <br><a href="logout">Logout</a><br> -->
-			<br>
-			<br>
+			<br> <br>
 			<h1>
 				Funzioni disponibili <br>
 			</h1>
@@ -40,26 +37,8 @@ user = (String) session.getAttribute("SESSION_UTENTE");
 		</div>
 	</div>
 
-	<%
-	} else {
-	%>
-	<div class="bg-img" style="background-image: url('images/banner2.jpg')">
-		<div class="description">
-			<h1>Utente non loggato!</h1>
-
-			<br>
-			<br>
-			<h1>
-				Vai alla registrazione <br>
-			</h1>
-			<a href="indexsignin.jsp">Registrazione</a>
-		</div>
-	</div>
 
 
-	<%
-	}
-	%>
 
 </body>
 </html>
