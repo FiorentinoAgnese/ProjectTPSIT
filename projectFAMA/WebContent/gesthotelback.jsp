@@ -82,7 +82,7 @@
         var="myDS"
         driver="com.mysql.cj.jdbc.Driver"
       	url="jdbc:mysql://localhost:3306/fama?serverTimezone=UTC"
-        user="root" password="admin" 
+        user="root" password="" 
     />
      
     <sql:query var="Customerlist"   dataSource="${myDS}">

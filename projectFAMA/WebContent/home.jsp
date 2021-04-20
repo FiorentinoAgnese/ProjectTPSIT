@@ -131,6 +131,8 @@ application.setAttribute("LOCALE_KEY", locale);
 						<li class="nav-item"><a class="nav-link"
 							href="prenotazione.jsp"><fmt:message key="prenota"
 									bundle="${resourceBundle}" /></a></li>
+									<li class="nav-item"><a class="nav-link"
+							href="gestprenotazione?cmd=viewall">Vedi Prenotazione</a></li>
 						<li class="nav-item"><a class="nav-link" href="#contact"><fmt:message
 									key="contatti" bundle="${resourceBundle}" /></a></li>
 						<div class="dropdown">

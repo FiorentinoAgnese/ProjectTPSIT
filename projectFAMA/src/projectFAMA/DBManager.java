@@ -26,7 +26,7 @@ public class DBManager {
 			System.out.println("Creazione della connessione");
 			urlDb = "jdbc:mysql://localhost:3306/fama?serverTimezone=UTC";
 			userDb = "root";
-			passwordDb = "admin";
+			passwordDb = "";
 			System.out.println("Registrazione dei driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registrazione effettuata");
@@ -246,6 +246,24 @@ public class DBManager {
 			e.printStackTrace();
 		}
 		return passw;
+	}
+	
+	public ArrayList<Viaggio> getViaggio() throws Exception {
+		ArrayList<Viaggio> elenco = new ArrayList<Viaggio>();
+
+		String sql = "SELECT * FROM Viaggio;";
+		rs = query.executeQuery(sql);
+		Viaggio v;
+
+		while (rs.next()) {
+			v = new Viaggio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+					rs.getInt(6));
+			elenco.add(v);
+		}
+
+		System.out.println("Viaggi caricati: " + elenco.size());
+
+		return elenco;
 	}
 
 	public static void main(String[] args) throws Exception {
