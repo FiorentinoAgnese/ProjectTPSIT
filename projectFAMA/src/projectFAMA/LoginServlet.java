@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
 		ArrayList regioni = new ArrayList();
@@ -51,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			DBManager db = new DBManager();
 			ArrayList<Utente> utenti = new ArrayList<Utente>();
 
-			if (db.controllaCredenziali(username, password) == true) {
+			if (db.controllaCredenziali(username, password) == true && db.getAdmin(username) == false) {
 				province = db.getPartenza();
 				regioni = db.getRegione();
 				request.getSession().setAttribute("SESSION_UTENTE", username);
@@ -60,10 +59,14 @@ public class LoginServlet extends HttpServlet {
 				System.out.println(regioni);
 				System.out.println(province);
 				// request.getSession().setAttribute("SESSION_UTENTE", username);
+				db.close();
 				response.sendRedirect("home.jsp");
+			} else if (db.controllaCredenziali(username, password) == true && db.getAdmin(username) == true) {
+				response.sendRedirect("menuback.jsp");
+				db.close();
 			} else
 				response.sendRedirect("login.jsp");
-			db.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

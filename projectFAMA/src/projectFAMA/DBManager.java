@@ -26,7 +26,7 @@ public class DBManager {
 			System.out.println("Creazione della connessione");
 			urlDb = "jdbc:mysql://localhost:3306/fama?serverTimezone=UTC";
 			userDb = "root";
-			passwordDb = "admin";
+			passwordDb = "";
 			System.out.println("Registrazione dei driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registrazione effettuata");
@@ -50,6 +50,17 @@ public class DBManager {
 		String sql = "SELECT * FROM utente WHERE username='" + user + "' AND passw='" + passCriptata + "';";
 		rs = query.executeQuery(sql);
 		return rs.next();
+	}
+
+	public boolean getAdmin(String user) throws Exception {
+		String sql = "SELECT Moderatore FROM utente WHERE utente.Username='" + user + "';";
+		rs = query.executeQuery(sql);
+		boolean b = false;
+		while (rs.next()) {
+			b = rs.getBoolean(1);
+		}
+		return b;
+
 	}
 
 	public ArrayList<Utente> getUtenti() throws Exception {
