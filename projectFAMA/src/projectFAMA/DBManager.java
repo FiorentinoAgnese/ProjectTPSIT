@@ -26,7 +26,7 @@ public class DBManager {
 			System.out.println("Creazione della connessione");
 			urlDb = "jdbc:mysql://localhost:3306/fama?serverTimezone=UTC";
 			userDb = "root";
-			passwordDb = "";
+			passwordDb = "admin";
 			System.out.println("Registrazione dei driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registrazione effettuata");
@@ -144,6 +144,27 @@ public class DBManager {
 		System.out.println("Hotel visualizzati: " + elenco.size());
 
 		return elenco;
+	}
+
+	public ArrayList<Hotel> getElencoHotel() throws Exception {
+		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
+		String sql = "SELECT * FROM hotel ORDER BY 1";
+		rs = query.executeQuery(sql);
+		ArrayList hotel = new ArrayList();
+		String l = "";
+		while (rs.next()) {
+			l = rs.getString(1);
+			hotel.add(l);
+		}
+		return hotel;
+	}
+
+	public int deleteHotel(String id) throws Exception {
+		String sql = "SET FOREIGN_KEY_CHECKS=0";
+		query.execute(sql);
+		String deleteSql = "DELETE FROM HOTEL WHERE IDHOTEL = '" + id + "';";
+		int nRighe = query.executeUpdate(deleteSql);
+		return nRighe;
 	}
 
 	public String getImmaginiHotel(int id) throws Exception {
