@@ -31,26 +31,25 @@ public class GestioneHotelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		Hotel h;
 		System.out.println("Servlet hotel");
 		ArrayList<Integer> id = new ArrayList<Integer>();
-		int idd;
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
-		String[] destinazione = request.getParameterValues("province");
-		System.out.println(destinazione);
+		String[] destinazioni = request.getParameterValues("province");
+		System.out.println("Destinazioni: " + destinazioni);
 		DBManager db;
 		try {
 			db = new DBManager();
-			for (int i = 0; i < destinazione.length; i++) {
-				idd = db.getIdProvincia(destinazione[i]);
-				id.add(idd);
-				System.out.println("Id: " + id);
-				elenco = db.getHotel(id.get(i));
-				System.out.println(elenco.get(i));
+			for (int i = 0; i < destinazioni.length; i++) {
+				id.add(db.getIdProvincia(destinazioni[i]));
+				elenco.addAll(db.getHotel(id.get(i)));
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		System.out.println("ID: " + id);
 		request.getSession().setAttribute("IDLUOGO_SESSIONE", id);
+		System.out.println(elenco);
 		request.getSession().setAttribute("HOTEL_SESSIONE", elenco);
 		response.sendRedirect("hotel.jsp");
 
