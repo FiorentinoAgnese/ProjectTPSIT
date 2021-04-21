@@ -152,8 +152,8 @@ elenco = (ArrayList<Viaggio>) session.getAttribute("ELENCO_VIAGGI");
 						<td><%=v.getDataInizio()%></td>
 						<td><%=v.getDataFine()%></td>
 						<td><%=v.getNumViaggiatori()%></td>
-						<td><%=v.getIdMezzo()%></td>
-						<td><%=v.getIdLuogo()%></td>
+						<td><%=v.getMezzo()%></td>
+						<td><%=v.getLuogo()%></td>
 					</tr>
 
 					<%

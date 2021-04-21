@@ -252,12 +252,12 @@ public class DBManager {
 	public ArrayList<Viaggio> getViaggio() throws Exception {
 		ArrayList<Viaggio> elenco = new ArrayList<Viaggio>();
 
-		String sql = "SELECT * FROM Viaggio;";
+		String sql = "SELECT IdViaggio, DataInizio, DataFine, NumViaggiatori, mezzotrasporto.tipoVeicolo, luogo.NomeCitta FROM viaggio, mezzotrasporto, luogo WHERE viaggio.Idmezzo=mezzotrasporto.Idmezzo AND viaggio.IdLuogo=luogo.IdLuogo";
 		rs = query.executeQuery(sql);
 		Viaggio v;
 
 		while (rs.next()) {
-			v = new Viaggio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
+			v = new Viaggio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString("tipoVeicolo"), rs.getString("NomeCitta"));
 			elenco.add(v);
 		}
 
