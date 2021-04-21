@@ -2,7 +2,7 @@
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%!ArrayList<Hotel> elenco;
 	int i;
-	ArrayList<Integer> id;
+
 	Hotel h;
 	String imm;
 	DBManager db;%>
@@ -10,7 +10,6 @@
 <%
 db = new DBManager();
 elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
-id = (ArrayList<Integer>) session.getAttribute("IDLUOGO_SESSIONE");
 %>
 <!doctype html>
 <html lang="en">
@@ -125,7 +124,7 @@ id = (ArrayList<Integer>) session.getAttribute("IDLUOGO_SESSIONE");
 						data-aos-delay="0" data-aos-duration="6000">
 						<%
 						for (i = 0; i < elenco.size(); i++) {
-							imm = db.getImmaginiHotel(id.get(i));
+							imm = db.getImmaginiHotel(elenco.get(i).getIdHotel());
 							h = (Hotel) elenco.get(i);
 						%>
 
@@ -134,6 +133,10 @@ id = (ArrayList<Integer>) session.getAttribute("IDLUOGO_SESSIONE");
 
 							<td><h2>
 									<input type="checkbox" value="<%=h.getNome()%>" name="nomeH"><%=h.getNome()%></h2></td>
+						</tr>
+						<tr>
+
+							<td><h4><%=h.getNomeCitta()%></h4></td>
 						</tr>
 						<tr>
 
@@ -149,7 +152,10 @@ id = (ArrayList<Integer>) session.getAttribute("IDLUOGO_SESSIONE");
 						</tr>
 						<tr>
 
-							<td><h4><%=h.getNumStelle()%></h4></td>
+							<td><h4>
+									<%=h.getNumStelle()%>
+									&nbsp Stelle
+								</h4></td>
 						</tr>
 						<tr>
 

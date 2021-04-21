@@ -144,12 +144,13 @@ public class DBManager {
 
 	public ArrayList<Hotel> getHotel(int luogo) throws Exception {
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
-		String sql = "SELECT * FROM hotel, luogo WHERE luogo.IdLuogo=hotel.IdLuogo AND hotel.IdLuogo='" + luogo + "';";
+		String sql = "SELECT hotel.*, NomeCitta FROM hotel, luogo WHERE luogo.IdLuogo=hotel.IdLuogo AND hotel.IdLuogo='"
+				+ luogo + "';";
 		rs = query.executeQuery(sql);
 		Hotel h;
 		while (rs.next()) {
 			h = new Hotel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7));
+					rs.getString(6), rs.getString("NomeCitta"));
 			elenco.add(h);
 		}
 		System.out.println("Hotel visualizzati: " + elenco.size());
@@ -179,7 +180,7 @@ public class DBManager {
 	}
 
 	public String getImmaginiHotel(int id) throws Exception {
-		String sql = "SELECT hotel.img FROM hotel WHERE hotel.IdLuogo='" + id + "';";
+		String sql = "SELECT hotel.img FROM hotel WHERE hotel.IdHotel='" + id + "';";
 		rs = query.executeQuery(sql);
 		String im = "";
 		while (rs.next()) {
@@ -247,7 +248,7 @@ public class DBManager {
 		}
 		return passw;
 	}
-	
+
 	public ArrayList<Viaggio> getViaggio() throws Exception {
 		ArrayList<Viaggio> elenco = new ArrayList<Viaggio>();
 
@@ -256,8 +257,7 @@ public class DBManager {
 		Viaggio v;
 
 		while (rs.next()) {
-			v = new Viaggio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-					rs.getInt(6));
+			v = new Viaggio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
 			elenco.add(v);
 		}
 
@@ -269,9 +269,17 @@ public class DBManager {
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
 		System.out.println();
+		String imm;
 		Hotel h;
-		int id;
+		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
+		ArrayList<Integer> id = new ArrayList<Integer>();
+		String[] destinazioni = { "Bari", "Lecce" };
+		try {
+			System.out.println(db.getHotel(75).get(0).getNomeCitta());
 
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 }

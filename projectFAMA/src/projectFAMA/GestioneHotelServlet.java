@@ -48,8 +48,8 @@ public class GestioneHotelServlet extends HttpServlet {
 			System.out.println(e);
 		}
 		System.out.println("ID: " + id);
-		request.getSession().setAttribute("IDLUOGO_SESSIONE", id);
-		System.out.println(elenco);
+		// request.getSession().setAttribute("IDLUOGO_SESSIONE", id);
+		System.out.println("Numeri hotel in sessione: " + elenco.size());
 		request.getSession().setAttribute("HOTEL_SESSIONE", elenco);
 		response.sendRedirect("hotel.jsp");
 

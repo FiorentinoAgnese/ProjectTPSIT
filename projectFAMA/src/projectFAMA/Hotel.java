@@ -6,21 +6,21 @@ public class Hotel {
 	String Telefono;
 	String Email;
 	String Nome;
-	String cittaHotel;
+	String nomeCitta;
 	String numStelle;
-	
+
 	public Hotel() {
 	}
 
-	public Hotel(int idHotel, String indirizzi, String telefono, String email, String nome, String cittaHotel,
-			String numStelle) {
+	public Hotel(int idHotel, String indirizzi, String telefono, String email, String nome, String numStelle,
+			String nomeCitta) {
 		super();
 		IdHotel = idHotel;
 		Indirizzi = indirizzi;
 		Telefono = telefono;
 		Email = email;
 		Nome = nome;
-		this.cittaHotel = cittaHotel;
+		this.nomeCitta = nomeCitta;
 		this.numStelle = numStelle;
 	}
 
@@ -64,14 +64,6 @@ public class Hotel {
 		Nome = nome;
 	}
 
-	public String getCittaHotel() {
-		return cittaHotel;
-	}
-
-	public void setCittaHotel(String cittaHotel) {
-		this.cittaHotel = cittaHotel;
-	}
-
 	public String getNumStelle() {
 		return numStelle;
 	}
@@ -80,10 +72,18 @@ public class Hotel {
 		this.numStelle = numStelle;
 	}
 
+	public String getNomeCitta() {
+		return nomeCitta;
+	}
+
+	public void setNomeCitta(String nomeCitta) {
+		this.nomeCitta = nomeCitta;
+	}
+
 	@Override
 	public String toString() {
 		return "Hotel [IdHotel=" + IdHotel + ", Indirizzi=" + Indirizzi + ", Telefono=" + Telefono + ", Email=" + Email
-				+ ", Nome=" + Nome + ", cittaHotel=" + cittaHotel + ", numStelle=" + numStelle + "]";
+				+ ", Nome=" + Nome + ", nomeCitta=" + nomeCitta + ", numStelle=" + numStelle + "]";
 	}
-	
+
 }
