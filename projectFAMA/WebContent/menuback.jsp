@@ -31,8 +31,8 @@ user = (String) session.getAttribute("SESSION_UTENTE");
 			<h1>
 				Funzioni disponibili <br>
 			</h1>
-			<a href="gesthotelback.jsp">Visualizza hotel</a>
-			<!-- <a href="GestioneProdottiServlet?cmd=viewall">Visualizza Luoghi</a>  -->
+			<a href="gesthotelback.jsp">Visualizza Hotel</a>
+			<a href="gestluogoback.jsp">Visualizza Luoghi</a> 
 
 		</div>
 	</div>
