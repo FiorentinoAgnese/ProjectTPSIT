@@ -1,30 +1,30 @@
 package projectFAMA;
 
 public class Luogo {
-	int IdLuogo;
+	String IdLuogo;
 	String NomeCitta;
 	String NomeRegione;
-	char Provincia;
-	int IdHotel;
-	int IdViaggio;
+	String Provincia;
+	String img;
+	
 	
 	public Luogo() {
 	}
 	
-	public Luogo(int idLuogo, String nomeCitta, String nomeRegione, char provincia, int idHotel) {
+	public Luogo(String idLuogo, String nomeCitta, String nomeRegione, String provincia, String img) {
 		IdLuogo = idLuogo;
 		NomeCitta = nomeCitta;
 		NomeRegione = nomeRegione;
 		Provincia = provincia;
-		IdHotel = idHotel;
+		this.img=img;
 	}
 
 
-	public int getIdLuogo() {
+	public String getIdLuogo() {
 		return IdLuogo;
 	}
 
-	public void setIdLuogo(int idLuogo) {
+	public void setIdLuogo(String idLuogo) {
 		IdLuogo = idLuogo;
 	}
 
@@ -44,26 +44,26 @@ public class Luogo {
 		NomeRegione = nomeRegione;
 	}
 
-	public char getProvincia() {
+	public String getProvincia() {
 		return Provincia;
 	}
 
-	public void setProvincia(char provincia) {
+	public void setProvincia(String provincia) {
 		Provincia = provincia;
 	}
 
-	public int getIdHotel() {
-		return IdHotel;
+	public String getImg() {
+		return img;
 	}
 
-	public void setIdHotel(int idHotel) {
-		IdHotel = idHotel;
+	public void setImg(String img) {
+		this.img=img;
 	}
 
 	@Override
 	public String toString() {
 		return "Luogo [IdLuogo=" + IdLuogo + ", NomeCitta=" + NomeCitta + ", NomeRegione=" + NomeRegione
-				+ ", Provincia=" + Provincia + ", IdHotel=" + IdHotel + "]";
+				+ ", Provincia=" + Provincia + ", Img=" + img + "]";
 	}
 	
 	
