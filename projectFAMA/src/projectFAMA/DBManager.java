@@ -26,7 +26,7 @@ public class DBManager {
 			System.out.println("Creazione della connessione");
 			urlDb = "jdbc:mysql://localhost:3306/fama?serverTimezone=UTC";
 			userDb = "root";
-			passwordDb = "";
+			passwordDb = "admin";
 			System.out.println("Registrazione dei driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registrazione effettuata");
@@ -149,14 +149,31 @@ public class DBManager {
 		rs = query.executeQuery(sql);
 		Hotel h;
 		while (rs.next()) {
-			h = new Hotel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString("NomeCitta"));
+			h = new Hotel(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6), rs.getString(7), rs.getString(8));
 			elenco.add(h);
 		}
 		System.out.println("Hotel visualizzati: " + elenco.size());
 
 		return elenco;
 	}
+	public int insertHotel(Hotel h) throws Exception {
+		int righe = 0;
+		String sqlInsert = "INSERT INTO HOTEL VALUES (?,?,?,?,?,?,?,?);";
+		PreparedStatement pstm;
+		pstm = connessione.prepareStatement(sqlInsert);
+		pstm.setString(1, h.getIdHotel());
+		pstm.setString(2, h.getIndirizzi());
+		pstm.setString(3, h.getTelefono());
+		pstm.setString(4, h.getEmail());
+		pstm.setString(5, h.getNome());
+		pstm.setString(6, h.getNumStelle());
+		pstm.setString(7, h.getIdLuogo());
+		pstm.setString(8, h.getImg());
+		righe = pstm.executeUpdate();
+		return righe;
+	}
+
 
 	public ArrayList<Hotel> getElencoHotel() throws Exception {
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
@@ -275,7 +292,7 @@ public class DBManager {
 		ArrayList<Integer> id = new ArrayList<Integer>();
 		String[] destinazioni = { "Bari", "Lecce" };
 		try {
-			System.out.println(db.getHotel(75).get(0).getNomeCitta());
+			System.out.println(db.getHotel(75).get(0).getIdLuogo());
 
 		} catch (Exception e) {
 			System.out.println(e);
