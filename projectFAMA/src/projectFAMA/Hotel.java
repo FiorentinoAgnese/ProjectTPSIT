@@ -1,35 +1,39 @@
 package projectFAMA;
 
 public class Hotel {
-	int IdHotel;
+	String IdHotel;
 	String Indirizzi;
 	String Telefono;
 	String Email;
 	String Nome;
-	String nomeCitta;
+	
 	String numStelle;
+	String IdLuogo;
+	String img;
 
 	public Hotel() {
 	}
 
-	public Hotel(int idHotel, String indirizzi, String telefono, String email, String nome, String numStelle,
-			String nomeCitta) {
+	public Hotel(String idHotel, String indirizzi, String telefono, String email, String nome, String numStelle, String IdLuogo, String img
+			) {
 		super();
 		IdHotel = idHotel;
 		Indirizzi = indirizzi;
 		Telefono = telefono;
 		Email = email;
 		Nome = nome;
-		this.nomeCitta = nomeCitta;
+		
 		this.numStelle = numStelle;
+		this.IdLuogo= IdLuogo;
+		this.img=img;
 	}
 
-	public int getIdHotel() {
+	public String getIdHotel() {
 		return IdHotel;
 	}
 
-	public void setIdHotel(int idHotel) {
-		IdHotel = idHotel;
+	public void setIdHotel(String string) {
+		IdHotel = string;
 	}
 
 	public String getIndirizzi() {
@@ -71,19 +75,30 @@ public class Hotel {
 	public void setNumStelle(String numStelle) {
 		this.numStelle = numStelle;
 	}
-
-	public String getNomeCitta() {
-		return nomeCitta;
+	
+	public String getIdLuogo() {
+		return IdLuogo;
 	}
 
-	public void setNomeCitta(String nomeCitta) {
-		this.nomeCitta = nomeCitta;
+	public void setIdLuogo(String IdLuogo) {
+		this.IdLuogo = IdLuogo;
 	}
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	
 
 	@Override
 	public String toString() {
 		return "Hotel [IdHotel=" + IdHotel + ", Indirizzi=" + Indirizzi + ", Telefono=" + Telefono + ", Email=" + Email
-				+ ", Nome=" + Nome + ", nomeCitta=" + nomeCitta + ", numStelle=" + numStelle + "]";
+				+ ", Nome=" + Nome + ", IdLuogo=" + IdLuogo + ", numStelle=" + numStelle + ", Img=" + img + "]";
 	}
+
 
 }

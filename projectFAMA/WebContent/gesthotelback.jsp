@@ -82,7 +82,7 @@
         var="myDS"
         driver="com.mysql.cj.jdbc.Driver"
       	url="jdbc:mysql://localhost:3306/fama?serverTimezone=UTC"
-        user="root" password="" 
+        user="root" password="admin" 
     />
      
     <sql:query var="Customerlist"   dataSource="${myDS}">
@@ -91,9 +91,10 @@
      
     <div align="center">
     
-     <a href="menuback.jsp"><h5>Go back to menu page</h5></a>
+    <div style = 'text-align: left'> <a href="menuback.jsp"><h5>Go back to menu page</h5></a></div>
     <table id="example" class="display" style="width:80%" border="1" cellpadding="5">
-            <caption><h2>List of hotel</h2></caption>
+   <div style = 'text-align: right'> <a   href="insertHotelBack.jsp"><img  align="center" src="images/plus.jpg"></a>   INSERT HOTEL</div><br>
+            <caption><h1>HOTEL</h1></caption>
             <thead>
 	            <tr>
 	              	<th>IdHotel</th>

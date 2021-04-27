@@ -31,7 +31,43 @@ public class gesthotelBackServlet extends HttpServlet {
 		String comando = request.getParameter("cmd");
 		String id; 
 		
+		System.out.println("comando: "+comando);
 		
+		if (comando.equals("inserisci")) {
+            DBManager db;
+            ArrayList<Hotel> elenco = new ArrayList<Hotel>();
+            Hotel h = new Hotel();
+            h.setIdHotel(request.getParameter("txtIdHotel"));
+            h.setIndirizzi(request.getParameter("txtIndirizzo"));
+            h.setTelefono(request.getParameter("txtTelefono"));
+            h.setEmail(request.getParameter("txtEmail"));
+            h.setNome(request.getParameter("txtNome"));
+            h.setNumStelle(request.getParameter("txtNumStelle"));
+            h.setIdLuogo(request.getParameter("txtIdLuogo"));
+            h.setImg(request.getParameter("txtImg"));
+
+ 
+
+            try {
+                db = new DBManager();
+                db.insertHotel(h);
+                elenco = db.getElencoHotel();
+                db.close();
+
+ 
+
+                request.getSession().setAttribute("ELENCO_HOTEL", elenco);
+                response.sendRedirect("gesthotelback.jsp");
+
+ 
+
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+
+	 
+	
+	 }
 		if(comando.equals("elimina"))
 		{
 			id = request.getParameter("id");
@@ -56,10 +92,7 @@ public class gesthotelBackServlet extends HttpServlet {
 			}
 		}
 		
-		
-		
-		
-		
+			
 		
 	}
 
