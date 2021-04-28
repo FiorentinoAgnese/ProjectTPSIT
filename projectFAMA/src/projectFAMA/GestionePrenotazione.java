@@ -29,19 +29,25 @@ public class GestionePrenotazione extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String comando = request.getParameter("cmd");
+		String username="";
+		String user="";
 		if(comando.equals("viewall"))
 		{
 			DBManager db;
-			ArrayList<Viaggio> elenco= new ArrayList<Viaggio>();
+			ArrayList<Prenota> elenco= new ArrayList<Prenota>();
 			
 			try 
 			{
+				//request.getSession().setAttribute("SESSION_UTENTE", username);
+				user=(String)request.getSession().getAttribute("SESSION_UTENTE");
+				System.out.println("utente= "+user);
 				db= new DBManager();
-				elenco=db.getViaggio();
+				elenco=db.getPrenotazione(user);
 				db.close();
 				
 				//ELENCO CLIENTI IN SESSIONE
 				request.getSession().setAttribute("ELENCO_VIAGGI", elenco);
+				
 				response.sendRedirect("vediprenotazione.jsp");
 			} catch (Exception e) {
 				e.printStackTrace();

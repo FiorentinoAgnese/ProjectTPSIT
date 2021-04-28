@@ -26,7 +26,7 @@ public class DBManager {
 			System.out.println("Creazione della connessione");
 			urlDb = "jdbc:mysql://localhost:3306/fama?serverTimezone=UTC";
 			userDb = "root";
-			passwordDb = "admin";
+			passwordDb = "";
 			System.out.println("Registrazione dei driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registrazione effettuata");
@@ -301,19 +301,21 @@ public class DBManager {
 		return passw;
 	}
 
-	public ArrayList<Viaggio> getViaggio() throws Exception {
-		ArrayList<Viaggio> elenco = new ArrayList<Viaggio>();
+	public ArrayList<Prenota> getPrenotazione(String utente) throws Exception {
+		ArrayList<Prenota> elenco = new ArrayList<Prenota>();
 
-		String sql = "SELECT IdViaggio, DataInizio, DataFine, NumViaggiatori, mezzotrasporto.tipoVeicolo, luogo.NomeCitta FROM viaggio, mezzotrasporto, luogo WHERE viaggio.Idmezzo=mezzotrasporto.Idmezzo AND viaggio.IdLuogo=luogo.IdLuogo";
+		String sql = "SELECT DataPrenotazione, NomeCitta FROM prenota, viaggio, luogo, utente WHERE prenota.IdViaggio=viaggio.IdViaggio AND viaggio.IdLuogo=luogo.IdLuogo AND prenota.IdUtente=utente.IdUtente AND Username='"
+				+ utente + "';";
 		rs = query.executeQuery(sql);
-		Viaggio v;
-
+		Prenota p;
+		System.out.println(sql);
+		System.out.println(utente);
 		while (rs.next()) {
-			v = new Viaggio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString("tipoVeicolo"), rs.getString("NomeCitta"));
-			elenco.add(v);
+			p = new Prenota(rs.getString(1), rs.getString("NomeCitta"));
+			elenco.add(p);
 		}
 
-		System.out.println("Viaggi caricati: " + elenco.size());
+		System.out.println("Prenotazioni caricate: " + elenco.size());
 
 		return elenco;
 	}

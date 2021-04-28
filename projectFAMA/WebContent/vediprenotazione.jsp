@@ -2,11 +2,13 @@
 	import="org.apache.tomcat.jni.Local"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%!ArrayList<Viaggio> elenco;
+<%!ArrayList<Prenota> elenco;
+	String username;
 	int i;
-	Viaggio v;%>
+	Prenota p;%>
 <%
-elenco = (ArrayList<Viaggio>) session.getAttribute("ELENCO_VIAGGI");
+elenco = (ArrayList<Prenota>) session.getAttribute("ELENCO_VIAGGI");
+username = (String)application.getAttribute("SESSION_UTENTE");
 %>
 
 <!doctype html>
@@ -88,12 +90,12 @@ elenco = (ArrayList<Viaggio>) session.getAttribute("ELENCO_VIAGGI");
 	</header>
 	<!-- Header End -->
 	<!-- Hero Start -->
-	<section class="hero">
+	<!--<section class="hero">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 offset-md-1 col-md-11">
-					<!--<div class="swiper-container hero-slider">-->
-					<!-- <div class="swiper-wrapper">-->
+					<!--<div class="swiper-container hero-slider">
+					<!-- <div class="swiper-wrapper">
 					<div class="swiper-slide slide-content d-flex align-items-center">
 						<div class="single-slide">
 							<h1 data-aos="fade-right" data-aos-delay="200">
@@ -106,7 +108,7 @@ elenco = (ArrayList<Viaggio>) session.getAttribute("ELENCO_VIAGGI");
 							<a href="#servizi" data-aos="fade-right" data-aos-delay="900"
 								href="#" class="btn btn-primary"> Inizia</a>
 							<!--<a href="login/index.html" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">Travel
-                                        Now</a>-->
+                                        Now</a>
 						</div>
 					</div>
 
@@ -116,7 +118,7 @@ elenco = (ArrayList<Viaggio>) session.getAttribute("ELENCO_VIAGGI");
 		</div>
 		<div class="texture"></div>
 		<div class="diag-bg"></div>
-	</section>
+	</section>-->
 	<!-- Hero End -->
 	<!-- Call To Action Start -->
 
@@ -125,41 +127,35 @@ elenco = (ArrayList<Viaggio>) session.getAttribute("ELENCO_VIAGGI");
 	<section class="services" id="servizi">
 		<div class="container">
 			<div class="title text-center">
+				<br><br>
+				<br><br>
 				<h6 class="title-primary">Agenzia FAMA</h6>
 				<h1 class="title-blue">Lista prenotazioni effettuate</h1>
 			
 			<div class="container">
-				<table>
+				<center><table border= 5px>
 
 					<tr>
 						<th></th>
-						<th>ID</th>
-						<th>Company Name</th>
-						<th>Contact Name</th>
-						<th>Numero Viaggiatori</th>
-						<th>Mezzo</th>
-						<th>Luogo</th>
+						<th>Data Prenotazione</th>
+						<th>Città</th>
 					</tr>
 
 					<%
 					for (i = 0; i < elenco.size(); i++) {
-						v = (Viaggio) elenco.get(i);
+						p = (Prenota) elenco.get(i);
 					%>
 
 					<tr>
 						<td></td>
-						<td><%=v.getIdViaggio()%></td>
-						<td><%=v.getDataInizio()%></td>
-						<td><%=v.getDataFine()%></td>
-						<td><%=v.getNumViaggiatori()%></td>
-						<td><%=v.getMezzo()%></td>
-						<td><%=v.getLuogo()%></td>
+						<td><%=p.getDataPrenotazione()%></td>
+						<td><%=p.getViaggio()%></td>
 					</tr>
 
 					<%
 					}
 					%>
-				</table>
+				</table></center>
 			</div>
 			</div>
 		</div>
