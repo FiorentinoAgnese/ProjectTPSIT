@@ -61,6 +61,10 @@ public class GestioneDestinazioni extends HttpServlet {
 			// Hotel h;
 			request.getSession().setAttribute("REGIONE", regione);
 			// request.getSession().setAttribute("HOTEL_SESSIONE", elenco);
+			request.getSession().setAttribute("PARTENZA", partenza);
+			request.getSession().setAttribute("DATAP", dataPartenza);
+			request.getSession().setAttribute("DATAA", dataArrivo);
+			request.getSession().setAttribute("MEZZO", mezzo);
 			response.sendRedirect("destinazione.jsp");
 
 		} catch (Exception e) {

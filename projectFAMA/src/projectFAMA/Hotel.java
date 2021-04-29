@@ -6,7 +6,7 @@ public class Hotel {
 	String Telefono;
 	String Email;
 	String Nome;
-	
+
 	String numStelle;
 	String IdLuogo;
 	String img;
@@ -14,18 +14,17 @@ public class Hotel {
 	public Hotel() {
 	}
 
-	public Hotel(String idHotel, String indirizzi, String telefono, String email, String nome, String numStelle, String IdLuogo, String img
-			) {
-		super();
+	public Hotel(String idHotel, String indirizzi, String telefono, String email, String nome, String numStelle,
+			String IdLuogo, String img) {
 		IdHotel = idHotel;
 		Indirizzi = indirizzi;
 		Telefono = telefono;
 		Email = email;
 		Nome = nome;
-		
+
 		this.numStelle = numStelle;
-		this.IdLuogo= IdLuogo;
-		this.img=img;
+		this.IdLuogo = IdLuogo;
+		this.img = img;
 	}
 
 	public String getIdHotel() {
@@ -75,7 +74,7 @@ public class Hotel {
 	public void setNumStelle(String numStelle) {
 		this.numStelle = numStelle;
 	}
-	
+
 	public String getIdLuogo() {
 		return IdLuogo;
 	}
@@ -83,7 +82,7 @@ public class Hotel {
 	public void setIdLuogo(String IdLuogo) {
 		this.IdLuogo = IdLuogo;
 	}
-	
+
 	public String getImg() {
 		return img;
 	}
@@ -92,13 +91,10 @@ public class Hotel {
 		this.img = img;
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "Hotel [IdHotel=" + IdHotel + ", Indirizzi=" + Indirizzi + ", Telefono=" + Telefono + ", Email=" + Email
 				+ ", Nome=" + Nome + ", IdLuogo=" + IdLuogo + ", numStelle=" + numStelle + ", Img=" + img + "]";
 	}
-
 
 }

@@ -117,7 +117,7 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 				<h6 class="title-primary">Agenzia FAMA</h6>
 				<h1 class="title-blue">Scegli il tuo hotel</h1>
 			</div>
-			<form action="GestioneHotelServlet" method="get">
+			<form action="Prenota" method="post">
 				<div class="container">
 					<table style="width: 100%" height="500%"
 						class="single-pricing text-center" data-aos="fade-up"
@@ -132,11 +132,11 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 						<tr>
 
 							<td><h2>
-									<input type="checkbox" value="<%=h.getNome()%>" name="nomeH"><%=h.getNome()%></h2></td>
+									<input type="radio" value="<%=h.getNome()%>" name="nomeH"><%=h.getNome()%></h2></td>
 						</tr>
 						<tr>
 
-							<td><h4><%=h.getNomeCitta()%></h4></td>
+							<td><h4><%=db.getCittaHotel(h.getIdHotel())%></h4></td>
 						</tr>
 						<tr>
 

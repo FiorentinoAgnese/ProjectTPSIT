@@ -117,6 +117,17 @@ public class DBManager {
 		return id;
 	}
 
+	public Utente getUtente(String user) throws Exception {
+		String sql = "SELECT * FROM utente WHERE Username='" + user + "';";
+		rs = query.executeQuery(sql);
+		Utente u = new Utente();
+		while (rs.next()) {
+			u = new Utente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6), rs.getString(7), rs.getString(8), rs.getBoolean(9));
+		}
+		return u;
+	}
+
 	public ArrayList getRegione() throws Exception {
 		String sql = "SELECT DISTINCT NomeRegione FROM luogo ORDER BY 1";
 		rs = query.executeQuery(sql);
@@ -194,6 +205,28 @@ public class DBManager {
 		return righe;
 	}
 
+	public void insertPrenota(String data, int idVia, int idUt) throws Exception {
+		String sqlInsert = "INSERT INTO prenota(DataPrenotazione, IdViaggio, IdUtente) VALUES (?,?,?)";
+		PreparedStatement pstm;
+		pstm = connessione.prepareStatement(sqlInsert);
+		pstm.setString(1, data);
+		pstm.setInt(2, idVia);
+		pstm.setInt(3, idUt);
+		pstm.executeUpdate();
+	}
+
+	public int idViaggio() throws Exception {
+		int id = 0;
+		ResultSet rs;
+		PreparedStatement pstm;
+		String sql = "SELECT MAX(IdViaggio) FROM viaggio";
+		rs = query.executeQuery(sql);
+		while (rs.next()) {
+			id = rs.getInt(1) + 1;
+		}
+		return id;
+	}
+
 	public ArrayList<Hotel> getElencoHotel() throws Exception {
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
 		String sql = "SELECT * FROM hotel ORDER BY 1";
@@ -236,7 +269,7 @@ public class DBManager {
 		return nRighe;
 	}
 
-	public String getImmaginiHotel(int id) throws Exception {
+	public String getImmaginiHotel(String id) throws Exception {
 		String sql = "SELECT hotel.img FROM hotel WHERE hotel.IdHotel='" + id + "';";
 		rs = query.executeQuery(sql);
 		String im = "";
@@ -257,6 +290,16 @@ public class DBManager {
 			provincia.add(l);
 		}
 		return provincia;
+	}
+
+	public int getIdMezzo(String mezzo) throws Exception {
+		int mez = 0;
+		String sql = "SELECT Idmezzo FROM mezzotrasporto WHERE tipoVeicolo='" + mezzo + "';";
+		rs = query.executeQuery(sql);
+		while (rs.next()) {
+			mez = rs.getInt(1);
+		}
+		return mez;
 	}
 
 	public ArrayList getProvincia(String regione) throws Exception {
@@ -306,6 +349,77 @@ public class DBManager {
 		return passw;
 	}
 
+	public int getIdUtente(String user) throws Exception {
+		int id = 0;
+		String sql = "SELECT IdUtente FROM utente WHERE Username='" + user + "'";
+		rs = query.executeQuery(sql);
+		while (rs.next()) {
+			id = rs.getInt(1);
+		}
+		return id;
+	}
+
+	public ArrayList<Viaggio> getViaggio() throws Exception {
+		ArrayList<Viaggio> elenco = new ArrayList<Viaggio>();
+
+		String sql = "SELECT * FROM Viaggio;";
+		rs = query.executeQuery(sql);
+		Viaggio v;
+
+		while (rs.next()) {
+			v = new Viaggio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
+			elenco.add(v);
+		}
+
+		System.out.println("Viaggi caricati: " + elenco.size());
+
+		return elenco;
+	}
+
+	public void insertViaggio(int id, String dataInizio, String daFi, int numV, int idMezz, int idLu) throws Exception {
+		String sqlInsert = "INSERT INTO viaggio(IdViaggio, DataInizio, DataFine, NumViaggiatori, Idmezzo, IdLuogo) VALUES (?,?,?,?,?,?)";
+		PreparedStatement pstm;
+		pstm = connessione.prepareStatement(sqlInsert);
+		pstm.setInt(1, id);
+		pstm.setString(2, dataInizio);
+		pstm.setString(3, daFi);
+		pstm.setInt(4, numV);
+		pstm.setInt(5, idMezz);
+		pstm.setInt(6, idLu);
+		System.out.println(pstm);
+		pstm.executeUpdate();
+	}
+
+	public int idLuogo(String citta) throws Exception {
+		int id = 0;
+		String sql = "SELECT IdLuogo FROM luogo WHERE NomeCitta='" + citta + "'";
+		rs = query.executeQuery(sql);
+		while (rs.next()) {
+			id = rs.getInt(1);
+		}
+		return id;
+	}
+
+	public String getCittaHotel(String id) throws Exception {
+		String citta = "";
+		String sql = "SELECT NomeCitta FROM hotel, luogo WHERE hotel.IdLuogo=luogo.IdLuogo AND IdHotel='" + id + "';";
+		rs = query.executeQuery(sql);
+		while (rs.next()) {
+			citta = rs.getString("NomeCitta");
+		}
+		return citta;
+	}
+
+	public int numViaggiatori(int id) throws Exception {
+		int num = 0;
+		String sql = "SELECT NumPostiMax FROM mezzotrasporto WHERE Idmezzo='" + id + "'";
+		rs = query.executeQuery(sql);
+		while (rs.next()) {
+			num = rs.getInt(1);
+		}
+		return num;
+	}
+
 	public ArrayList<Prenota> getPrenotazione(String utente) throws Exception {
 		ArrayList<Prenota> elenco = new ArrayList<Prenota>();
 
@@ -327,18 +441,7 @@ public class DBManager {
 
 	public static void main(String[] args) throws Exception {
 		DBManager db = new DBManager();
-		System.out.println();
-		String imm;
-		Hotel h;
-		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
-		ArrayList<Integer> id = new ArrayList<Integer>();
-		String[] destinazioni = { "Bari", "Lecce" };
-		try {
-			System.out.println(db.getHotel(75).get(0).getIdLuogo());
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		System.out.println(db.getImmaginiHotel("52"));
 	}
 
 }

@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("pass");
 		ArrayList regioni = new ArrayList();
 		ArrayList province = new ArrayList();
+		Utente u = new Utente();
 		try {
 			DBManager db = new DBManager();
 			ArrayList<Utente> utenti = new ArrayList<Utente>();
@@ -53,9 +54,11 @@ public class LoginServlet extends HttpServlet {
 			if (db.controllaCredenziali(username, password) == true && db.getAdmin(username) == false) {
 				province = db.getPartenza();
 				regioni = db.getRegione();
+				u = db.getUtente(username);
 				request.getSession().setAttribute("SESSION_UTENTE", username);
 				request.getSession().setAttribute("SESSION_REGIONI", regioni);
 				request.getSession().setAttribute("SESSION_PROVINCE", province);
+				request.getSession().setAttribute("UTENTE", u);
 				System.out.println(regioni);
 				System.out.println(province);
 				// request.getSession().setAttribute("SESSION_UTENTE", username);
