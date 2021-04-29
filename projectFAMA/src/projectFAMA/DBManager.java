@@ -157,8 +157,11 @@ public class DBManager {
 
 		return elenco;
 	}
+
 	public int insertHotel(Hotel h) throws Exception {
 		int righe = 0;
+		String sql = "SET FOREIGN_KEY_CHECKS=0;";
+		rs = query.executeQuery(sql);
 		String sqlInsert = "INSERT INTO HOTEL VALUES (?,?,?,?,?,?,?,?);";
 		PreparedStatement pstm;
 		pstm = connessione.prepareStatement(sqlInsert);
@@ -173,9 +176,11 @@ public class DBManager {
 		righe = pstm.executeUpdate();
 		return righe;
 	}
+
 	public int insertLuogo(Luogo l) throws Exception {
 		int righe = 0;
-		
+		String sql = "SET FOREIGN_KEY_CHECKS=0;";
+		rs = query.executeQuery(sql);
 		String sqlInsert = "INSERT INTO LUOGO VALUES (?,?,?,?,?);";
 		PreparedStatement pstm;
 		pstm = connessione.prepareStatement(sqlInsert);
@@ -185,10 +190,9 @@ public class DBManager {
 		pstm.setString(4, l.getProvincia());
 		pstm.setString(5, l.getImg());
 		righe = pstm.executeUpdate();
-	
+
 		return righe;
 	}
-
 
 	public ArrayList<Hotel> getElencoHotel() throws Exception {
 		ArrayList<Hotel> elenco = new ArrayList<Hotel>();
@@ -202,7 +206,7 @@ public class DBManager {
 		}
 		return hotel;
 	}
-	
+
 	public ArrayList<Luogo> getElencoLuogo() throws Exception {
 		ArrayList<Luogo> elenco = new ArrayList<Luogo>();
 		String sql = "SELECT * FROM luogo ORDER BY 1";
@@ -223,6 +227,7 @@ public class DBManager {
 		int nRighe = query.executeUpdate(deleteSql);
 		return nRighe;
 	}
+
 	public int deleteLuogo(String id) throws Exception {
 		String sql = "SET FOREIGN_KEY_CHECKS=0";
 		query.execute(sql);
