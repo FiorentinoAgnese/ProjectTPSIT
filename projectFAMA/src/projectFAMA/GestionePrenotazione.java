@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Servlet implementation class GestionePrenotazione
  */
@@ -53,7 +56,12 @@ public class GestionePrenotazione extends HttpServlet {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
+
 		}
+		Logger logger = LogManager.getLogger(GestionePrenotazione.class); 
+		logger.info("lettura dei parametri");
+		logger.debug("this is a debug log message"); 
+		logger.error("this is a error log message");
 	}
 
 	/**

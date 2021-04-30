@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Servlet implementation class GestioneDestinazioni
  */
@@ -70,6 +73,10 @@ public class GestioneDestinazioni extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		Logger logger = LogManager.getLogger(GestioneDestinazioni.class); 
+		logger.info("lettura dei parametri");
+		logger.debug("this is a debug log message"); 
+		logger.error("this is a error log message");
 	}
 
 	/**

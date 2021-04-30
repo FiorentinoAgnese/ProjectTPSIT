@@ -14,13 +14,13 @@ import org.apache.logging.log4j.*;
  * Servlet implementation class logservlet
  */
 @WebServlet("/logservlet")
-public class logservlet extends HttpServlet {
+public class LogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public logservlet() {
+    public LogServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +30,7 @@ public class logservlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Logger logger = LogManager.getLogger(logservlet.class); 
+		Logger logger = LogManager.getLogger(LogServlet.class); 
 		logger.info("lettura dei parametri");
 		logger.debug("this is a debug log message"); 
 		logger.error("this is a error log message");

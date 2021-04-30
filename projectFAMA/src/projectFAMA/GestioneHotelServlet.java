@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Servlet implementation class GestioneHotelServlet
  */
@@ -53,7 +56,10 @@ public class GestioneHotelServlet extends HttpServlet {
 		request.getSession().setAttribute("HOTEL_SESSIONE", elenco);
 		request.getSession().setAttribute("DESTINAZIONI", destinazioni);
 		response.sendRedirect("hotel.jsp");
-
+		Logger logger = LogManager.getLogger(GestioneHotelServlet.class); 
+		logger.info("lettura dei parametri");
+		logger.debug("this is a debug log message"); 
+		logger.error("this is a error log message");
 	}
 
 	/**
