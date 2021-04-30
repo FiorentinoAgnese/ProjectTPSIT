@@ -17,23 +17,43 @@ user = (String) session.getAttribute("SESSION_UTENTE");
 <link rel="stylesheet" href="css/stilemenu.css">
 </head>
 <body>
-
-
-
-	<div class="bg-img" style="background-image: url('images/banner2.jpg')">
-		<div class="description">
-			<h1>
+     <div> <h4>
 				Benvenuto
-				<%=user%></h1>
+				<%=user%></h4>
+				<a align='right' href="login.jsp"> <h6>Torna al login</h6></a></div>
+  <a align='center'> <h1>AGENCY  MANAGEMENT</h1></a>
+
+	<div  class="bg-img" >
+<style>
+.bg-img {
+ background-image: url('images/menu.jpg');
+ background-repeat: no-repeat;
+  background-size: cover;
+}
+	</style>	
+		<div class="description">
+			
 
 			<!-- <br><a href="logout">Logout</a><br> -->
 			<br> <br>
-			<h1>
-				Funzioni disponibili <br>
-			</h1>
-			<a href="gesthotelback.jsp">Visualizza Hotel</a>
-			<a href="gestluogoback.jsp">Visualizza Luoghi</a> 
+			<h2>
+				Funzioni disponibili: <br><br>
+			</h2>
+		<div class="div" style=" width: 15%;"><a href="gesthotelback.jsp" ><img src="images/hotel.jpg"  width="150" height="200"><br><h4 align="center">Visualizza Hotel</h4></a></div>	<br><br>
+		<div class="div" style=" width: 15%;">	<a href="gestluogoback.jsp" ><img src="images/luogo.jpg" width="150" height="200"><br><h4 align="center">Visualizza Luoghi</h4></a> </div>	
+<style>
+.div {
+border-style:solid;
+ border-color:black; 
+ border-width:3px;
+ background-color:white;
 
+
+}
+	</style>	
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		</div>
 	</div>
 
