@@ -303,7 +303,8 @@ public class DBManager {
 	}
 
 	public ArrayList getProvincia(String regione) throws Exception {
-		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo WHERE NomeRegione='" + regione + "';";
+		String sql = "SELECT DISTINCT luogo.NomeCitta FROM luogo WHERE NomeRegione='" + regione.replace("'", "''")
+				+ "';";
 		rs = query.executeQuery(sql);
 		ArrayList provincia = new ArrayList();
 		String l = "";
