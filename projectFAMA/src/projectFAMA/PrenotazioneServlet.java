@@ -60,7 +60,9 @@ public class PrenotazioneServlet extends HttpServlet {
 				dataR);
 		DataOdierna d = new DataOdierna();
 		String data = d.getData();
+
 		try {
+			MailPrenotazione mail = new MailPrenotazione();
 			DBManager db = new DBManager();
 			int idUtente = db.getIdUtente(username);
 			ArrayList<Integer> idLuogo = new ArrayList<Integer>();
@@ -78,6 +80,7 @@ public class PrenotazioneServlet extends HttpServlet {
 			response.addHeader("Content-Type", "application/force-download");
 			response.addHeader("Content-Disposition", "attachment; filename=\"Prenotazione.pdf\"");
 			response.getOutputStream().write(output.toByteArray());
+			mail.sendMail(user.getEmail(), output);
 			System.out.println("Download effettuato");
 		} catch (Exception e) {
 			System.out.println(e);

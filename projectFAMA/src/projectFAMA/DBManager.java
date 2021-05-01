@@ -26,7 +26,7 @@ public class DBManager {
 			System.out.println("Creazione della connessione");
 			urlDb = "jdbc:mysql://localhost:3306/fama?serverTimezone=UTC";
 			userDb = "root";
-			passwordDb = "admin";
+			passwordDb = "";
 			System.out.println("Registrazione dei driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registrazione effettuata");
