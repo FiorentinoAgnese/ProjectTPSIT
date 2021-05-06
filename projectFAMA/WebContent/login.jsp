@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.Locale" import="org.apache.tomcat.jni.Local" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" import="java.util.Locale" 
+	import="org.apache.tomcat.jni.Local" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
 <%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -75,20 +76,20 @@
 					<div class="contact100-form-checkbox">
 						<input class="input-checkbox100" id="ckb1" type="checkbox"
 							name="remember-me"> <label class="label-checkbox100"
-							for="ckb1"> Remember me </label>
+							for="ckb1"> <fmt:message key="ricordare" bundle="${resourceBundle}"/> </label>
 					</div>
 
 					<div class="container-login100-form-btn">
 					 <!-- <input type="submit" action="LoginServlet" method="post">-->
-						 <button type="submit" class="login100-form-btn">Login</button>
+						 <button type="submit" class="login100-form-btn"><fmt:message key="login" bundle="${resourceBundle}"/></button>
 					</div>
 
 					<div class="text-center p-t-10">
-						<a class="txt1" href="indexsignin.jsp"> Sign In </a>
+						<a class="txt1" href="indexsignin.jsp"> <fmt:message key="registrati" bundle="${resourceBundle}"/></a>
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="indexforgotpass.jsp"> Forgot Password?
+						<a class="txt1" href="indexforgotpass.jsp"> <fmt:message key="password" bundle="${resourceBundle}"/>
 						</a>
 					</div>
 				</form>

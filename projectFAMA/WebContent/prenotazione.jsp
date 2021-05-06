@@ -1,7 +1,9 @@
 
 <%@page import="projectFAMA.DBManager"%>
-<%@ page language="java" import="java.util.ArrayList"
+<%@ page language="java" import="java.util.ArrayList" import="java.util.Locale"
+	import="org.apache.tomcat.jni.Local"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%!ArrayList luoghi;
 	ArrayList regioni;
@@ -11,11 +13,14 @@
 	DBManager db;
 	String prov;
 	ArrayList p;
-	ArrayList imm;%>
+	ArrayList imm;
+	String locale;%>
 <%
 regioni = (ArrayList) session.getAttribute("SESSION_REGIONI");
 luoghi = (ArrayList) session.getAttribute("SESSION_PROVINCE");
 db = new DBManager();
+locale = request.getParameter("locale");
+application.setAttribute("LOCALE_KEY", locale);
 %>
 
 <!doctype html>
@@ -44,8 +49,53 @@ db = new DBManager();
 	}
 </script>
 </head>
+<style>
+.dropbtn {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.5;
+	color: white;
+	padding: 12px;
+	font-size: 12px;
+	border: none;
+	cursor: pointer;
+}
 
+/*.dropdown {
+  position: relative;
+  display: inline-block;
+}*/
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ee1515
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #000;
+}
+</style>
 <body>
+	<fmt:setLocale value="<%=locale%>" />
+	<fmt:setBundle basename="it.meucci.bundle.messages"
+		var="resourceBundle" />
 	<div class="css-loader">
 		<div
 			class="loader-inner line-scale d-flex align-items-center justify-content-center"></div>
@@ -74,13 +124,24 @@ db = new DBManager();
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarSupportedContent">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="home.jsp">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="home.jsp"><fmt:message key="home" bundle="${resourceBundle}" /></a></li>
 						<!-- <li class="nav-item"><a class="nav-link" href="#servizi">Servizi</a></li>
                         <li class="nav-item"><a class="nav-link" href="#chisiamo?">Chi Siamo?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#mete">Mete</a></li>
                         <li class="nav-item"><a class="nav-link" href="#people">Personale</a></li>
                         <li class="nav-item"><a class="nav-link" href="login.jsp">Prenotazione</a></li>-->
-						<li class="nav-item"><a class="nav-link" href="#contact">Contatti</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact"><fmt:message key="contatti" bundle="${resourceBundle}" /></a></li>
+						<div class="dropdown">
+							<a class="dropbtn">Lingue</a>
+							<div class="dropdown-content">
+								<a href="prenotazione.jsp?locale=it_IT"><img src="images/italia.png"
+									width="50"></a> <a href="prenotazione.jsp?locale=en_US"><img
+									src="images/inglese.jpg" width="50"></a> <a
+									href="prenotazione.jsp?locale=fr_FR"><img src="images/francia.png"
+									width="50"></a> <a href="prenotazione.jsp?locale=es_US"><img
+									src="images/spagna.png" width="50"></a>
+							</div>
+						</div>
 					</ul>
 					<form class="bg-white search-form" method="get" id="searchform">
 						<div class="input-group">
@@ -97,12 +158,12 @@ db = new DBManager();
 	</header>
 	<!-- Header End -->
 	<!-- Hero Start -->
-	<section class="hero">
+	<!--<section class="hero">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 offset-md-1 col-md-11">
-					<!--<div class="swiper-container hero-slider">-->
-					<!-- <div class="swiper-wrapper">-->
+					<!--<div class="swiper-container hero-slider">
+					<!-- <div class="swiper-wrapper">
 					<div class="swiper-slide slide-content d-flex align-items-center">
 						<div class="single-slide">
 							<h1 data-aos="fade-right" data-aos-delay="200">
@@ -115,7 +176,7 @@ db = new DBManager();
 							<a href="#servizi" data-aos="fade-right" data-aos-delay="900"
 								href="#" class="btn btn-primary"> Inizia</a>
 							<!--<a href="login/index.html" data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">Travel
-                                        Now</a>-->
+                                        Now</a>
 						</div>
 					</div>
 
@@ -125,7 +186,7 @@ db = new DBManager();
 		</div>
 		<div class="texture"></div>
 		<div class="diag-bg"></div>
-	</section>
+	</section>-->
 	<!-- Hero End -->
 	<!-- Call To Action Start -->
 
@@ -134,8 +195,10 @@ db = new DBManager();
 	<section class="services" id="servizi">
 		<div class="container">
 			<div class="title text-center">
+				<br><br>
+				<br><br>
 				<h6 class="title-primary">Agenzia FAMA</h6>
-				<h1 class="title-blue">Scegli la tua meta</h1>
+				<h1 class="title-blue"><fmt:message key="sceltaM" bundle="${resourceBundle}" /></h1>
 			</div>
 			<form action="GestioneDestinazioni" method="get">
 				<div class="container">
@@ -143,7 +206,7 @@ db = new DBManager();
 						class="single-pricing text-center" data-aos="fade-up"
 						data-aos-delay="0" data-aos-duration="6000">
 						<tr>
-							<th><h3>Partenza</h3></th>
+							<th><h3><fmt:message key="partenza" bundle="${resourceBundle}" /></h3></th>
 							<th><select name="partenze">
 									<%
 									for (i = 0; i < luoghi.size(); i++) {
@@ -157,16 +220,20 @@ db = new DBManager();
 							</select></th>
 						</tr>
 						<tr>
-							<td><h3>Data Partenza</h3></td>
+							<td><h3><fmt:message key="dataP" bundle="${resourceBundle}" /></h3></td>
 							<td><input class="input100" type="date" name="dataP"></td>
 
 						</tr>
 						<tr>
-							<td><h3>Data Arrivo</h3></td>
+							<td><h3><fmt:message key="dataR" bundle="${resourceBundle}" /></h3></td>
 							<td><input class="input100" type="date" name="dataA"></td>
 						</tr>
 						<tr>
-							<td><h3>Mezzo di Trasporto</h3></td>
+							<td><h3><fmt:message key="numV" bundle="${resourceBundle}" /></h3></td>
+							<td><input class="input100" type="text" name="num"></td>
+						</tr>
+						<tr>
+							<td><h3><fmt:message key="mezzo" bundle="${resourceBundle}" /></h3></td>
 							<td><select name="mezzo">
 									<option>Aereo</option>
 									<option>Treno</option>
@@ -176,7 +243,7 @@ db = new DBManager();
 
 
 						<tr>
-							<td><h3>Regione</h3></td>
+							<td><h3><fmt:message key="regione" bundle="${resourceBundle}" /></h3></td>
 							<td><select name="regione">
 									<%
 									for (i = 0; i < regioni.size(); i++) {
@@ -200,7 +267,7 @@ db = new DBManager();
 					</table>
 
 					<button type="submit" data-aos="fade-right" data-aos-delay="900"
-						class="btn btn-primary">Cerca</button>
+						class="btn btn-primary"><h3><fmt:message key="cerca" bundle="${resourceBundle}" /></button>
 
 				</div>
 
@@ -216,21 +283,20 @@ db = new DBManager();
 	<section class="pricing-table" id="mete">
 		<div class="container">
 			<div class="title text-center">
-				<h6 class="title-primary">I nostri posti</h6>
-				<h1 class="title-blue">Le offerte da non perdersi</h1>
+				<h6 class="title-primary"><fmt:message key="posti" bundle="${resourceBundle}" /></h6>
+				<h1 class="title-blue"><fmt:message key="metee" bundle="${resourceBundle}" /></h1>
 			</div>
 			<div class="row no-gutters">
 				<div class="col-md-4">
 					<div class="single-pricing text-center" data-aos="fade-up"
 						data-aos-delay="0" data-aos-duration="600">
-						<h2>Firenze</h2>
+						<h2><fmt:message key="meta1" bundle="${resourceBundle}" /></h2>
 						<p>
 							<img src="images/firenze.jpg" width=350px><br> <br>
-							Se sei un appassionato di arte e cultura, Firenze è la città
-							perfetta per te
+							<fmt:message key="desc1" bundle="${resourceBundle}" />
 						</p>
 						<a href="https://it.wikipedia.org/wiki/Firenze"
-							class="btn btn-primary">Vedi pacchetto</a>
+							class="btn btn-primary"><fmt:message key="pre" bundle="${resourceBundle}" /></a>
 						<svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd"
 								fill="rgb(238, 21, 21)"
@@ -241,14 +307,13 @@ db = new DBManager();
 				<div class="col-md-4">
 					<div class="single-pricing text-center" data-aos="fade-up"
 						data-aos-delay="300" data-aos-duration="600">
-						<h2>Roma</h2>
+						<h2><fmt:message key="meta2" bundle="${resourceBundle}" /></h2>
 						<p>
 							<img src="images/roma.jpg" width=350px><br> <br>
-							Quale miglior città se non Roma per scoprire la storia della
-							nostra Italia
+							<fmt:message key="desc2" bundle="${resourceBundle}" />
 						</p>
 						<a href="https://it.wikipedia.org/wiki/Roma"
-							class="btn btn-primary">Vedi Pacchetto</a>
+							class="btn btn-primary"><fmt:message key="pre" bundle="${resourceBundle}" /></a>
 						<svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd"
 								fill="rgb(238, 21, 21)"
@@ -259,14 +324,13 @@ db = new DBManager();
 				<div class="col-md-4">
 					<div class="single-pricing text-center" data-aos="fade-up"
 						data-aos-delay="600" data-aos-duration="600">
-						<h2>Venezia</h2>
+						<h2><fmt:message key="meta3" bundle="${resourceBundle}" /></h2>
 						<p>
 							<img src="images/venecia.jpg" width=350px> <br> <br>
-							Spostarsi con la gondola è il modo migliore per rilassarsi e
-							godersi il panorama
+							<fmt:message key="desc3" bundle="${resourceBundle}" />
 						</p>
 						<a href="https://it.wikipedia.org/wiki/Venezia"
-							class="btn btn-primary">Vedi Pacchetto</a>
+							class="btn btn-primary"><fmt:message key="pre" bundle="${resourceBundle}" /></a>
 						<svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd"
 								fill="rgb(238, 21, 21)"
@@ -283,11 +347,11 @@ db = new DBManager();
 				<div class="offset-xl-1 col-xl-6" data-aos="fade-right"
 					data-aos-delay="200" data-aos-duration="800">
 					<div class="title">
-						<h1>Lascia un commento</h1>
+						<h1><fmt:message key="lascia" bundle="${resourceBundle}" /></h1>
 						<input type="text" name="name" id="name" placeholder="Nome" /> <input
 							type="text" name="message" id="message" placeholder="Messaggio" /><br>
-						<input type="submit" class="primary" value="Invia Messaggio" /> <input
-							type="reset" value="Resetta commento" />
+						<input type="submit" class="primary" value="<fmt:message key="inviam" bundle="${resourceBundle}" />" /> <input
+							type="reset" value="<fmt:message key="resetta" bundle="${resourceBundle}" />" />
 
 					</div>
 				</div>
@@ -424,13 +488,12 @@ db = new DBManager();
 			<div
 				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
 				<div class="content" data-aos="fade-right" data-aos-delay="200">
-					<h2>ENTRA NELLA NOSTRA NEWSLETTER</h2>
-					<p>Iscriviti per rimanere aggiornato su tutte le novità della
-						nostra agenzia.</p>
+					<h2><fmt:message key="new1" bundle="${resourceBundle}" /></h2>
+					<p><fmt:message key="new2" bundle="${resourceBundle}" /></p>
 				</div>
 				<div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400"
 					data-aos-offset="0">
-					<a href="#" class="btn btn-primary">Join Newsletter</a>
+					<a href="#" class="btn btn-primary"><fmt:message key="new3" bundle="${resourceBundle}" /></a>
 				</div>
 			</div>
 		</div>
@@ -447,20 +510,19 @@ db = new DBManager();
 							<div class="single-widget contact-widget" data-aos="fade-up"
 								data-aos-delay="0">
 								<h6 class="widget-tiltle">&nbsp;</h6>
-								<p>Potete trovare la lista dei nostri contatti, dove
-									possiamo rispondere a qualsiasi vostra richiesta</p>
+								<p><fmt:message key="nomeContatti" bundle="${resourceBundle}" /></p>
 
 								<div class="media">
 									<i class="fa fa-map-marker"></i>
 									<div class="media-body ml-3">
-										<h6>Indirizzo</h6>
+										<h6><fmt:message key="indirizzo" bundle="${resourceBundle}" /></h6>
 										Via Alto Adige 37<br> Casarano, Lecce, 73042 Italia
 									</div>
 								</div>
 								<div class="media">
 									<i class="fa fa-envelope-o"></i>
 									<div class="media-body ml-3">
-										<h6>Hai una domanda? Invia una emal a</h6>
+										<h6><fmt:message key="email" bundle="${resourceBundle}" /></h6>
 										<a href="mailto:support@steelthemes.com">info@fama.com</a>
 									</div>
 								</div>
@@ -468,7 +530,7 @@ db = new DBManager();
 									<i class="fa fa-phone"></i>
 									<div class="media-body ml-3">
 										<h6>
-											Puoi chiamarci al <a href="tel:+610791803458">
+											<fmt:message key="numero" bundle="${resourceBundle}" /> <a href="tel:+610791803458">
 												0833/524787</a>
 										</h6>
 

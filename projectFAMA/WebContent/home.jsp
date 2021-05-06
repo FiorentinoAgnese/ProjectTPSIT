@@ -93,7 +93,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 				<nav class="d-flex aic">
 					<a href="LogOutServlet" class="login"><i class="fa fa-user"
-						aria-hidden="true"></i>Log Out</a>
+						aria-hidden="true"></i><fmt:message key="logout" bundle="${resourceBundle}" /></a>
 					<ul class="nav social d-none d-md-flex">
 						<li><a href="https://www.facebook.com/francesco.minerba.94"
 							target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -132,7 +132,8 @@ application.setAttribute("LOCALE_KEY", locale);
 							href="prenotazione.jsp"><fmt:message key="prenota"
 									bundle="${resourceBundle}" /></a></li>
 									<li class="nav-item"><a class="nav-link"
-							href="gestprenotazione?cmd=viewall">Vedi Prenotazione</a></li>
+							href="gestprenotazione?cmd=viewall"><fmt:message key="visPrenotazione"
+									bundle="${resourceBundle}" /></a></li>
 						<li class="nav-item"><a class="nav-link" href="#contact"><fmt:message
 									key="contatti" bundle="${resourceBundle}" /></a></li>
 						<div class="dropdown">

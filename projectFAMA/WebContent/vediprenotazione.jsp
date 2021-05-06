@@ -5,10 +5,13 @@
 <%!ArrayList<Prenota> elenco;
 	String username;
 	int i;
-	Prenota p;%>
+	Prenota p;
+	String locale;%>
 <%
 elenco = (ArrayList<Prenota>) session.getAttribute("ELENCO_VIAGGI");
 username = (String)application.getAttribute("SESSION_UTENTE");
+locale = request.getParameter("locale");
+application.setAttribute("LOCALE_KEY", locale);
 %>
 
 <!doctype html>
@@ -37,8 +40,53 @@ username = (String)application.getAttribute("SESSION_UTENTE");
 	}
 </script>
 </head>
+<style>
+.dropbtn {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.5;
+	color: white;
+	padding: 12px;
+	font-size: 12px;
+	border: none;
+	cursor: pointer;
+}
 
+/*.dropdown {
+  position: relative;
+  display: inline-block;
+}*/
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ee1515
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #000;
+}
+</style>
 <body>
+	<fmt:setLocale value="<%=locale%>" />
+	<fmt:setBundle basename="it.meucci.bundle.messages"
+		var="resourceBundle" />
 	<div class="css-loader">
 		<div
 			class="loader-inner line-scale d-flex align-items-center justify-content-center"></div>
@@ -67,13 +115,24 @@ username = (String)application.getAttribute("SESSION_UTENTE");
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarSupportedContent">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="home.jsp">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="home.jsp"><fmt:message key="indietro" bundle="${resourceBundle}" /></a></li>
 						<!-- <li class="nav-item"><a class="nav-link" href="#servizi">Servizi</a></li>
                         <li class="nav-item"><a class="nav-link" href="#chisiamo?">Chi Siamo?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#mete">Mete</a></li>
                         <li class="nav-item"><a class="nav-link" href="#people">Personale</a></li>
                         <li class="nav-item"><a class="nav-link" href="login.jsp">Prenotazione</a></li>-->
-						<li class="nav-item"><a class="nav-link" href="#contact">Contatti</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact"><fmt:message key="contatti" bundle="${resourceBundle}" /></a></li>
+						<div class="dropdown">
+							<a class="dropbtn">Lingue</a>
+							<div class="dropdown-content">
+								<a href="vediprenotazione.jsp?locale=it_IT"><img src="images/italia.png"
+									width="50"></a> <a href="vediprenotazione.jsp?locale=en_US"><img
+									src="images/inglese.jpg" width="50"></a> <a
+									href="vediprenotazione.jsp?locale=fr_FR"><img src="images/francia.png"
+									width="50"></a> <a href="vediprenotazione.jsp?locale=es_US"><img
+									src="images/spagna.png" width="50"></a>
+							</div>
+						</div>
 					</ul>
 					<form class="bg-white search-form" method="get" id="searchform">
 						<div class="input-group">
@@ -130,15 +189,15 @@ username = (String)application.getAttribute("SESSION_UTENTE");
 				<br><br>
 				<br><br>
 				<h6 class="title-primary">Agenzia FAMA</h6>
-				<h1 class="title-blue">Lista prenotazioni effettuate</h1>
+				<h1 class="title-blue"><fmt:message key="lista" bundle="${resourceBundle}" /></h1>
 			
 			<div class="container">
 				<center><table border= 5px>
 
 					<tr>
 						<th></th>
-						<th>Data Prenotazione</th>
-						<th>Città</th>
+						<th><fmt:message key="dataP" bundle="${resourceBundle}" /></th>
+						<th><fmt:message key="cittaa" bundle="${resourceBundle}" /></th>
 					</tr>
 
 					<%

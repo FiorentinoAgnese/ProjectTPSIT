@@ -1,15 +1,20 @@
-<%@ page language="java" import="java.util.*,projectFAMA.*"
+<%@ page language="java" import="java.util.*,projectFAMA.*" import="java.util.Locale"
+	import="org.apache.tomcat.jni.Local"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%!ArrayList<Hotel> elenco;
 	int i;
 
 	Hotel h;
 	String imm;
-	DBManager db;%>
+	DBManager db;
+	String locale;%>
 
 <%
 db = new DBManager();
 elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
+locale = request.getParameter("locale");
+application.setAttribute("LOCALE_KEY", locale);
 %>
 <!doctype html>
 <html lang="en">
@@ -33,8 +38,53 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 <link rel="stylesheet" href="assets/css/responsive.css">
 
 </head>
+<style>
+.dropbtn {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.5;
+	color: white;
+	padding: 12px;
+	font-size: 12px;
+	border: none;
+	cursor: pointer;
+}
 
+/*.dropdown {
+  position: relative;
+  display: inline-block;
+}*/
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ee1515
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #000;
+}
+</style>
 <body>
+	<fmt:setLocale value="<%=locale%>" />
+	<fmt:setBundle basename="it.meucci.bundle.messages"
+		var="resourceBundle" />
 	<div class="css-loader">
 		<div
 			class="loader-inner line-scale d-flex align-items-center justify-content-center"></div>
@@ -60,9 +110,20 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarSupportedContent">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="home.jsp">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="destinazione.jsp"><fmt:message key="indietro" bundle="${resourceBundle}" /></a></li>
 
-						<li class="nav-item"><a class="nav-link" href="#contact">Contatti</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact"><fmt:message key="contatti" bundle="${resourceBundle}" /></a></li>
+						<div class="dropdown">
+							<a class="dropbtn">Lingue</a>
+							<div class="dropdown-content">
+								<a href="hotel.jsp?locale=it_IT"><img src="images/italia.png"
+									width="50"></a> <a href="hotel.jsp?locale=en_US"><img
+									src="images/inglese.jpg" width="50"></a> <a
+									href="hotel.jsp?locale=fr_FR"><img src="images/francia.png"
+									width="50"></a> <a href="hotel.jsp?locale=es_US"><img
+									src="images/spagna.png" width="50"></a>
+							</div>
+						</div>
 					</ul>
 					<form class="bg-white search-form" method="get" id="searchform">
 						<div class="input-group">
@@ -78,13 +139,13 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 		</div>
 	</header>
 	<!-- Header End -->
-	<!-- Hero Start -->
+	<!-- Hero Start 
 	<section class="hero">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 offset-md-1 col-md-11">
-					<!--<div class="swiper-container hero-slider">-->
-					<!-- <div class="swiper-wrapper">-->
+					<!--<div class="swiper-container hero-slider">
+					<!-- <div class="swiper-wrapper">
 					<div class="swiper-slide slide-content d-flex align-items-center">
 						<div class="single-slide">
 							<h1 data-aos="fade-right" data-aos-delay="200">
@@ -106,7 +167,7 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 		</div>
 		<div class="texture"></div>
 		<div class="diag-bg"></div>
-	</section>
+	</section>-->
 
 
 	<!-- Call To Action End -->
@@ -114,8 +175,10 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 	<section class="services" id="servizi">
 		<div class="container">
 			<div class="title text-center">
+			<br><br>
+			<br><br>
 				<h6 class="title-primary">Agenzia FAMA</h6>
-				<h1 class="title-blue">Scegli il tuo hotel</h1>
+				<h1 class="title-blue"><fmt:message key="sceltaH" bundle="${resourceBundle}" /></h1>
 			</div>
 			<form action="Prenota" method="post">
 				<div class="container">
@@ -176,7 +239,7 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 
 					<br>
 					<button type="submit" data-aos="fade-right" data-aos-delay="900"
-						class="btn btn-primary">Prenota</button>
+						class="btn btn-primary"><h3><fmt:message key="pre" bundle="${resourceBundle}" /></button>
 
 				</div>
 
@@ -196,20 +259,19 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 							<div class="single-widget contact-widget" data-aos="fade-up"
 								data-aos-delay="0">
 								<h6 class="widget-tiltle">&nbsp;</h6>
-								<p>Potete trovare la lista dei nostri contatti, dove
-									possiamo rispondere a qualsiasi vostra richiesta</p>
+								<p><fmt:message key="nomeContatti" bundle="${resourceBundle}" /></p>
 
 								<div class="media">
 									<i class="fa fa-map-marker"></i>
 									<div class="media-body ml-3">
-										<h6>Indirizzo</h6>
+										<h6><fmt:message key="indirizzo" bundle="${resourceBundle}" /></h6>
 										Via Alto Adige 37<br> Casarano, Lecce, 73042 Italia
 									</div>
 								</div>
 								<div class="media">
 									<i class="fa fa-envelope-o"></i>
 									<div class="media-body ml-3">
-										<h6>Hai una domanda? Invia una emal a</h6>
+										<h6><fmt:message key="email" bundle="${resourceBundle}" /></h6>
 										<a href="mailto:support@steelthemes.com">agencyfama54@gmail.com</a>
 									</div>
 								</div>
@@ -217,7 +279,7 @@ elenco = (ArrayList<Hotel>) session.getAttribute("HOTEL_SESSIONE");
 									<i class="fa fa-phone"></i>
 									<div class="media-body ml-3">
 										<h6>
-											Puoi chiamarci al <a href="tel:+610791803458">
+											<fmt:message key="numero" bundle="${resourceBundle}" /> <a href="tel:+610791803458">
 												0833/524787</a>
 										</h6>
 
