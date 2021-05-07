@@ -95,15 +95,15 @@ application.setAttribute("LOCALE_KEY", locale);
 					<a href="LogOutServlet" class="login"><i class="fa fa-user"
 						aria-hidden="true"></i><fmt:message key="logout" bundle="${resourceBundle}" /></a>
 					<ul class="nav social d-none d-md-flex">
-						<li><a href="https://www.facebook.com/francesco.minerba.94"
+						<!--<li><a href="https://www.facebook.com/francesco.minerba.94"
 							target="_blank"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="https://twitter.com/frances05288570"
-							target="_blank"><i class="fa fa-twitter"></i></a></li>
+							target="_blank"><i class="fa fa-twitter"></i></a></li>-->
 					</ul>
 				</nav>
 			</div>
 			<nav class="navbar navbar-expand-md navbar-light">
-				<!-- <a class="navbar-brand" href="index.html"><img src="" alt="Multipurpose"></a>-->
+				<!-- <a class="navbar-brand" href="index.html"><img src="" alt="Multipurpose"></a>
 				<div class="group d-flex align-items-center">
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
@@ -117,7 +117,7 @@ application.setAttribute("LOCALE_KEY", locale);
 						class="cart" href="#"><i class="fa fa-shopping-cart"></i></a>
 				</div>
 				<a class="search-icon d-none d-md-block" href="#"><i
-					class="fa fa-search"></i></a>
+					class="fa fa-search"></i></a>-->
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarSupportedContent">
 					<ul class="navbar-nav">
@@ -137,7 +137,7 @@ application.setAttribute("LOCALE_KEY", locale);
 						<li class="nav-item"><a class="nav-link" href="#contact"><fmt:message
 									key="contatti" bundle="${resourceBundle}" /></a></li>
 						<div class="dropdown">
-							<a class="dropbtn">Lingue</a>
+							<a class="dropbtn"><fmt:message key="lingue" bundle="${resourceBundle}" /></a>
 							<div class="dropdown-content">
 								<a href="home.jsp?locale=it_IT"><img src="images/italia.png"
 									width="50"></a> <a href="home.jsp?locale=en_US"><img
@@ -148,7 +148,7 @@ application.setAttribute("LOCALE_KEY", locale);
 							</div>
 						</div>
 					</ul>
-					<form class="bg-white search-form" method="get" id="searchform">
+					<!--<form class="bg-white search-form" method="get" id="searchform">
 						<div class="input-group">
 							<input class="field form-control" id="s" name="s" type="text"
 								placeholder="Search"> <span class="input-group-btn">
@@ -156,7 +156,7 @@ application.setAttribute("LOCALE_KEY", locale);
 								name="submit" type="submit" value="Search">
 							</span>
 						</div>
-					</form>
+					</form>-->
 				</div>
 			</nav>
 		</div>
@@ -180,10 +180,9 @@ application.setAttribute("LOCALE_KEY", locale);
 								<fmt:message key="ben1" bundle="${resourceBundle}" />
 							</p>
 							<a href="login/index.html" data-aos="fade-right"
-								data-aos-delay="900" href="#" class="btn btn-primary">See
-								More</a> <a href="login/index.html" data-aos="fade-right"
-								data-aos-delay="900" href="#" class="btn btn-primary">Travel
-								Now</a>
+								data-aos-delay="900" href="#" class="btn btn-primary"><fmt:message key="see" bundle="${resourceBundle}" />
+								</a> <a href="login/index.html" data-aos="fade-right"
+								data-aos-delay="900" href="#" class="btn btn-primary"><fmt:message key="travel" bundle="${resourceBundle}" /></a>
 						</div>
 					</div>
 					<!--  <div class="swiper-slide slide-content d-flex align-items-center">
@@ -215,7 +214,7 @@ application.setAttribute("LOCALE_KEY", locale);
 	</section>
 	<!-- Hero End -->
 	<!-- Call To Action Start -->
-	<section class="cta" data-aos="fade-up" data-aos-delay="0">
+	<!--<section class="cta" data-aos="fade-up" data-aos-delay="0">
 		<div class="container">
 			<div
 				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
@@ -234,7 +233,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>--> 
 	<!-- Call To Action End -->
 	<!-- Services Start -->
 	<!--  <section class="services" id="servizi">
@@ -466,7 +465,7 @@ application.setAttribute("LOCALE_KEY", locale);
 							<img src="images/firenze.jpg" width=350px><br>
 							<br>
 						</p>
-						<a href="" class="btn btn-primary"><fmt:message key="pre"
+						<a href="prenotazione.jsp" class="btn btn-primary"><fmt:message key="pre"
 								bundle="${resourceBundle}" /></a>
 						<svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd"
@@ -485,7 +484,7 @@ application.setAttribute("LOCALE_KEY", locale);
 							<img src="images/roma.jpg" width=350px><br>
 							<br>
 						</p>
-						<a href="" class="btn btn-primary"><fmt:message key="pre"
+						<a href="prenotazione.jsp" class="btn btn-primary"><fmt:message key="pre"
 								bundle="${resourceBundle}" /></a>
 						<svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd"
@@ -504,7 +503,7 @@ application.setAttribute("LOCALE_KEY", locale);
 							<img src="images/venecia.jpg" width=350px> <br>
 							<br>
 						</p>
-						<a href="" class="btn btn-primary"><fmt:message key="pre"
+						<a href="prenotazione.jsp" class="btn btn-primary"><fmt:message key="pre"
 								bundle="${resourceBundle}" /></a>
 						<svg viewBox="0 0 170 193">
                             <path fill-rule="evenodd"
@@ -621,7 +620,7 @@ application.setAttribute("LOCALE_KEY", locale);
     </section>-->
 	<!-- Testimonial and Clients End -->
 	<!-- Call To Action 2 Start -->
-	<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
+	<!--<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
 		<div class="container">
 			<div
 				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
@@ -640,7 +639,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Call To Action 2 End -->
 	<!-- Footer Start -->
 	<footer>
@@ -812,7 +811,6 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-		-->
 		<!-- Foot Note End -->
 	</footer>
 	<!-- Footer Endt -->

@@ -108,16 +108,6 @@ application.setAttribute("LOCALE_KEY", locale);
 
 					<img src=>
 				</div>
-				<nav class="d-flex aic">
-					<!--<a href="home.html" class="login"><i class="fa fa-user" aria-hidden="true"></i>Home</a>-->
-					<!--  <a href="login.jsp" class="login"><i class="fa fa-user" aria-hidden="true"></i>Login</a>-->
-					<ul class="nav social d-none d-md-flex">
-						<li><a href="https://www.facebook.com/francesco.minerba.94"
-							target="_blank"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="https://twitter.com/frances05288570"
-							target="_blank"><i class="fa fa-twitter"></i></a></li>
-					</ul>
-				</nav>
 			</div>
 			<nav class="navbar navbar-expand-md navbar-light">
 
@@ -220,8 +210,8 @@ application.setAttribute("LOCALE_KEY", locale);
 							</select></th>
 						</tr>
 						<tr>
-							<td><h3><fmt:message key="dataP" bundle="${resourceBundle}" /></h3></td>
-							<td><input class="input100" type="date" name="dataP"></td>
+							<td><h3><fmt:message key="dataPa" bundle="${resourceBundle}" /></h3></td>
+							<td><input class="input100" type="date" name="dataPa"></td>
 
 						</tr>
 						<tr>
@@ -280,7 +270,7 @@ application.setAttribute("LOCALE_KEY", locale);
 
 	<!-- Trust End -->
 	<!-- Pricing Start -->
-	<section class="pricing-table" id="mete">
+	<!--<section class="pricing-table" id="mete">
 		<div class="container">
 			<div class="title text-center">
 				<h6 class="title-primary"><fmt:message key="posti" bundle="${resourceBundle}" /></h6>
@@ -340,8 +330,8 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="trust" id="chisiamo?">
+	</section>-->
+	<!--<section class="trust" id="chisiamo?">
 		<div class="container">
 			<div class="row">
 				<div class="offset-xl-1 col-xl-6" data-aos="fade-right"
@@ -377,10 +367,10 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Pricing End -->
 	<!-- Testimonial and Clients Start -->
-	<div class="title text-center">
+	<!--<div class="title text-center">
 		<h6 class="title-primary">feedback</h6>
 		<h1 class="title-blue">Ciò che pensano di noi</h1>
 	</div>
@@ -480,10 +470,10 @@ application.setAttribute("LOCALE_KEY", locale);
 					<div class="test-pagination"></div>
 				</div>
 			</div>
-	</section>
+	</section>-->
 	<!-- Testimonial and Clients End -->
 	<!-- Call To Action 2 Start -->
-	<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
+	<!--<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
 		<div class="container">
 			<div
 				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
@@ -497,7 +487,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Call To Action 2 End -->
 	<!-- Footer Start -->
 	<footer>

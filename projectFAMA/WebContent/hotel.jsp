@@ -96,14 +96,6 @@ application.setAttribute("LOCALE_KEY", locale);
 				<div class="contact">
 					<img src=>
 				</div>
-				<nav class="d-flex aic">
-					<ul class="nav social d-none d-md-flex">
-						<li><a href="https://www.facebook.com/francesco.minerba.94"
-							target="_blank"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="https://twitter.com/frances05288570"
-							target="_blank"><i class="fa fa-twitter"></i></a></li>
-					</ul>
-				</nav>
 			</div>
 			<nav class="navbar navbar-expand-md navbar-light">
 

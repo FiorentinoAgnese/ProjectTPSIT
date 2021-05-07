@@ -196,8 +196,8 @@ application.setAttribute("LOCALE_KEY", locale);
 
 					<tr>
 						<th></th>
-						<th><fmt:message key="dataP" bundle="${resourceBundle}" /></th>
-						<th><fmt:message key="cittaa" bundle="${resourceBundle}" /></th>
+						<th><h4><fmt:message key="dataP" bundle="${resourceBundle}" /></h4></th>
+						<th><h4><fmt:message key="cittaa" bundle="${resourceBundle}" /></h4></th>
 					</tr>
 
 					<%
@@ -225,7 +225,7 @@ application.setAttribute("LOCALE_KEY", locale);
 
 	<!-- Trust End -->
 	<!-- Pricing Start -->
-	<section class="pricing-table" id="mete">
+	<!-- <section class="pricing-table" id="mete">
 		<div class="container">
 			<div class="title text-center">
 				<h6 class="title-primary">I nostri posti</h6>
@@ -325,10 +325,10 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Pricing End -->
 	<!-- Testimonial and Clients Start -->
-	<div class="title text-center">
+	<!--<div class="title text-center">
 		<h6 class="title-primary">feedback</h6>
 		<h1 class="title-blue">Ciò che pensano di noi</h1>
 	</div>
@@ -428,10 +428,10 @@ application.setAttribute("LOCALE_KEY", locale);
 					<div class="test-pagination"></div>
 				</div>
 			</div>
-	</section>
+	</section>-->
 	<!-- Testimonial and Clients End -->
 	<!-- Call To Action 2 Start -->
-	<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
+	<!--<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
 		<div class="container">
 			<div
 				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
@@ -446,7 +446,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Call To Action 2 End -->
 	<!-- Footer Start -->
 	<footer>

@@ -110,12 +110,6 @@ application.setAttribute("LOCALE_KEY", locale);
 					<a href="login.jsp" class="login"><i class="fa fa-user"
 						aria-hidden="true"></i>
 					<fmt:message key="loginBtn" bundle="${resourceBundle}" /></a>
-					<ul class="nav social d-none d-md-flex">
-						<li><a href="https://www.facebook.com/francesco.minerba.94"
-							target="_blank"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="https://twitter.com/frances05288570"
-							target="_blank"><i class="fa fa-twitter"></i></a></li>
-					</ul>
 				</nav>
 			</div>
 			<nav class="navbar navbar-expand-md navbar-light">
@@ -148,7 +142,7 @@ application.setAttribute("LOCALE_KEY", locale);
 						<li class="nav-item"><a class="nav-link" href="#contact"><fmt:message
 									key="contatti" bundle="${resourceBundle}" /></a></li>
 						<div class="dropdown">
-							<a class="dropbtn">Lingue</a>
+							<a class="dropbtn"><fmt:message key="lingue" bundle="${resourceBundle}" /></a>
 							<div class="dropdown-content">
 								<a href="index.jsp?locale=it_IT"><img
 									src="images/italia.png" width="50"></a> <a
@@ -190,9 +184,9 @@ application.setAttribute("LOCALE_KEY", locale);
 										<fmt:message key="benvenuto1" bundle="${resourceBundle}" />
 									</p>
 									<a href="login.jsp" data-aos="fade-right" data-aos-delay="900"
-										href="#" class="btn btn-primary">See More</a> <a
+										href="#" class="btn btn-primary"><fmt:message key="see" bundle="${resourceBundle}" /></a> <a
 										href="login.jsp" data-aos="fade-right" data-aos-delay="900"
-										href="#" class="btn btn-primary">Travel Now</a>
+										href="#" class="btn btn-primary"><fmt:message key="travel" bundle="${resourceBundle}" /></a>
 								</div>
 							</div>
 							<div class="swiper-slide slide-content d-flex align-items-center">
@@ -204,9 +198,9 @@ application.setAttribute("LOCALE_KEY", locale);
 										<fmt:message key="benvenuto3" bundle="${resourceBundle}" />
 									</p>
 									<a href="login.jsp" data-aos="fade-right" data-aos-delay="900"
-										href="#" class="btn btn-primary">See More</a> <a
+										href="#" class="btn btn-primary"><fmt:message key="see" bundle="${resourceBundle}" /></a> <a
 										href="login.jsp" data-aos="fade-right" data-aos-delay="900"
-										href="#" class="btn btn-primary">Travel Now</a>
+										href="#" class="btn btn-primary"><fmt:message key="travel" bundle="${resourceBundle}" /></a>
 								</div>
 							</div>
 						</div>
@@ -223,7 +217,7 @@ application.setAttribute("LOCALE_KEY", locale);
 	</section>
 	<!-- Hero End -->
 	<!-- Call To Action Start -->
-	<section class="cta" data-aos="fade-up" data-aos-delay="0">
+	<!--<section class="cta" data-aos="fade-up" data-aos-delay="0">
 		<div class="container">
 			<div
 				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
@@ -242,7 +236,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Call To Action End -->
 	<!-- Services Start -->
 	<section class="services" id="servizi">
@@ -549,7 +543,7 @@ application.setAttribute("LOCALE_KEY", locale);
 								<div class="offset-lg-1 col-lg-10">
 									<div class="test-img" data-aos="fade-up" data-aos-delay="0"
 										data-aos-offset="0">
-										<img src="images/agnese.jpg" alt="Testimonial 1">
+										<img src="images/fiore.jpg" alt="Testimonial 1">
 									</div>
 									<h5 data-aos="fade-up" data-aos-delay="200"
 										data-aos-duration="600" data-aos-offset="0">
@@ -570,7 +564,7 @@ application.setAttribute("LOCALE_KEY", locale);
 								<div class="offset-lg-1 col-lg-10">
 									<div class="test-img" data-aos="fade-up" data-aos-delay="0"
 										data-aos-offset="0">
-										<img src="images/matteo.jpg" alt="Testimonial 1">
+										<img src="images/corsano.JPG" alt="Testimonial 1">
 									</div>
 									<h5 data-aos="fade-up" data-aos-delay="200"
 										data-aos-duration="600" data-aos-offset="0">
@@ -612,14 +606,14 @@ application.setAttribute("LOCALE_KEY", locale);
 								<div class="offset-lg-1 col-lg-10">
 									<div class="test-img" data-aos="fade-up" data-aos-delay="0"
 										data-aos-offset="0">
-										<img src="images/minerba.jpg alt="Testimonial 1">
+										<img src="images/minerba.png" alt="Testimonial 1">
 									</div>
 									<h5 data-aos="fade-up" data-aos-delay="200"
 										data-aos-duration="600" data-aos-offset="0">
 										<fmt:message key="francesco" bundle="${resourceBundle}" />
 									</h5>
 									<span data-aos="fade-up" data-aos-delay="400"
-										data-aos-duration="600" data-aos-offset="0"><fmt:message
+										data-aos-duration="600" data-aos-offset="0"> <fmt:message
 											key="mansione4" bundle="${resourceBundle}" /></span>
 									<p data-aos="fade-up" data-aos-delay="600"
 										data-aos-duration="600" data-aos-offset="0">
@@ -658,7 +652,7 @@ application.setAttribute("LOCALE_KEY", locale);
 	</section>
 	<!-- Testimonial and Clients End -->
 	<!-- Call To Action 2 Start -->
-	<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
+	<!--<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
 		<div class="container">
 			<div
 				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
@@ -677,7 +671,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Call To Action 2 End -->
 	<!-- Footer Start -->
 	<footer>
@@ -849,7 +843,6 @@ application.setAttribute("LOCALE_KEY", locale);
 				</div>
 			</div>
 		</div>
-		-->
 		<!-- Foot Note End -->
 	</footer>
 	<!-- Footer Endt -->
