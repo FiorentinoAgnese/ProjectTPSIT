@@ -130,37 +130,7 @@ application.setAttribute("LOCALE_KEY", locale);
 			</nav>
 		</div>
 	</header>
-	<!-- Header End -->
-	<!-- Hero Start 
-	<section class="hero">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 offset-md-1 col-md-11">
-					<!--<div class="swiper-container hero-slider">
-					<!-- <div class="swiper-wrapper">
-					<div class="swiper-slide slide-content d-flex align-items-center">
-						<div class="single-slide">
-							<h1 data-aos="fade-right" data-aos-delay="200">
-								Prenota il tuo viaggio <br>
-							</h1>
-							<p data-aos="fade-right" data-aos-delay="600">Qui puoi
-								scegliere le tue mete e prenotarle in pochi minuti Prenotazione
-								semplice e veloce con risposta instantanea alle vostre richieste
-							</p>
-							<a href="#servizi" data-aos="fade-right" data-aos-delay="900"
-								href="#" class="btn btn-primary"> Inizia</a>
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-		<div class="texture"></div>
-		<div class="diag-bg"></div>
-	</section>-->
-
+	
 
 	<!-- Call To Action End -->
 	<!-- Services Start -->

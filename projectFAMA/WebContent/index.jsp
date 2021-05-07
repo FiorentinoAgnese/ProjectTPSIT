@@ -77,22 +77,7 @@ application.setAttribute("LOCALE_KEY", locale);
 	<fmt:setLocale value="<%=locale%>" />
 	<fmt:setBundle basename="it.meucci.bundle.messages"
 		var="resourceBundle" />
-	<!--<center>
-    <table>
-    	<tr>
-    		<td><a href="index.jsp?locale=en_US"><img src="images/uk.jpg" width="80"></a></td>
-    		<td><a href="index.jsp?locale=it_IT"><img src="images/it.jpg" width="80"></a></td>
-    		<td><a href="index.jsp?locale=fr_FR"><img src="images/fr.jpg" width="80"></a></td>
-    		<td><a href="index.jsp?locale=es_US"><img src="images/es.jpg" width="80"></a></td>
-    	</tr>
-    </table>
-  	<br><br><br><br><br><br>   
-    
-    <A href="login.jsp"><font face="Arial" size="25" color="LIGHTGREEN">
-                   <fmt:message key="welcomeBtn" bundle="${resourceBundle}"/>
-                   </font>
-     </A>
-    </center>-->
+	
 	<div class="css-loader">
 		<div
 			class="loader-inner line-scale d-flex align-items-center justify-content-center"></div>
@@ -113,17 +98,7 @@ application.setAttribute("LOCALE_KEY", locale);
 				</nav>
 			</div>
 			<nav class="navbar navbar-expand-md navbar-light">
-				<!-- <a class="navbar-brand" href="index.html"><img src="" alt="Multipurpose"></a>-->
-				<!--<div class="group d-flex align-items-center">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span
-                            class="navbar-toggler-icon"></span></button>
-                    <a class="login-icon d-sm-none" href="login/index.html"><i class="fa fa-user"></i></a>
-                    <a class="login-icon d-sm-none" href="login/index.htm"><i class="fa fa-user"></i></a>
-                    <a class="cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-                <a class="search-icon d-none d-md-block" href="#"><i class="fa fa-search"></i></a>-->
+			
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarSupportedContent">
 					<ul class="navbar-nav">
@@ -215,28 +190,7 @@ application.setAttribute("LOCALE_KEY", locale);
 		<div class="texture"></div>
 		<div class="diag-bg"></div>
 	</section>
-	<!-- Hero End -->
-	<!-- Call To Action Start -->
-	<!--<section class="cta" data-aos="fade-up" data-aos-delay="0">
-		<div class="container">
-			<div
-				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
-				<div class="content" data-aos="fade-right" data-aos-delay="200">
-					<h2>
-						<fmt:message key="new1" bundle="${resourceBundle}" />
-					</h2>
-					<p>
-						<fmt:message key="new2" bundle="${resourceBundle}" />
-					</p>
-				</div>
-				<div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400"
-					data-aos-offset="0">
-					<a href="#" class="btn btn-primary"><fmt:message key="new3"
-							bundle="${resourceBundle}" /></a>
-				</div>
-			</div>
-		</div>
-	</section>-->
+	
 	<!-- Call To Action End -->
 	<!-- Services Start -->
 	<section class="services" id="servizi">
@@ -333,74 +287,7 @@ application.setAttribute("LOCALE_KEY", locale);
 			</div>
 		</div>
 	</section>
-	<!--   <section class="recent-posts">
-        <div class="container">
-         <div class="title text-center">
-               <h6 class="title-primary">Il nostro team</h6>
-                <h1 class="title-blue">Perchè scegliere noi</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-right"
-                        data-aos-duration="800">
-                        <div class="post-content text-sm-right">
-                             <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">I migliori musei italiani</a></h3>
-                            <p>Torino, Firenze, Roma</p>
-                           <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/musei.jpg" alt="Post 1">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-left" data-aos-duration="800">
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/parchiNazionali.jpg" alt="Post 1">
-                        </div>
-                        <div class="post-content">
-                            <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">Tutti i parchi nazionali a disposizione</a></h3>
-                            <p>Aosta, Trento, L'Aquila</p>
-                            <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-right" data-aos-delay="200"
-                        data-aos-duration="800">
-                        <div class="post-content text-sm-right">
-                             <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">Le spiagge più belle solo da noi</a></h3>
-                            <p>Lecce, Genova, Palermo</p>
-                            <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/spiagge.jpg" alt="Post 1">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-rpost d-sm-flex align-items-center" data-aos="fade-left" data-aos-delay="200"
-                        data-aos-duration="800">
-                        <div class="post-thumb">
-                            <img class="img-fluid" src="images/chiese.jpg" alt="Post 1">
-                        </div>
-                        <div class="post-content">
-                             <!--<time datetime="2019-04-06T13:53">15 Oct, 2019</time>   
-                            <h3><a href="#">Le grandi chiese che hanno fatto la storia</a></h3>
-                            <p>Perugia, Firenze, Roma</p>
-                         <!--  <a class="post-btn" href="#"><i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="text-center">
-                <a href="#" class="btn btn-primary">See More</a>
-            </div>
-        </div>
-    </section>-->
+	
 	<!-- Recent Posts End -->
 	<!-- Trust Start -->
 	<section class="trust" id="chisiamo?">
@@ -626,52 +513,7 @@ application.setAttribute("LOCALE_KEY", locale);
 					<div class="test-pagination"></div>
 				</div>
 			</div>
-			<!--   <div class="clients" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">
-                <div class="swiper-container clients-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="assets/images/client1.png" alt="Client 1">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client2.png" alt="Client 2">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client3.png" alt="Client 3">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client4.png" alt="Client 4">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="assets/images/client5.png" alt="Client 5">
-                        </div>
-                    </div>
-                    <div class="test-pagination"></div>
-                </div>
-            </div>
-        </div>-->
-	</section>
-	<!-- Testimonial and Clients End -->
-	<!-- Call To Action 2 Start -->
-	<!--<section class="cta cta2" data-aos="fade-up" data-aos-delay="0">
-		<div class="container">
-			<div
-				class="cta-content d-xl-flex align-items-center justify-content-around text-center text-xl-left">
-				<div class="content" data-aos="fade-right" data-aos-delay="200">
-					<h2>
-						<fmt:message key="new1" bundle="${resourceBundle}" />
-					</h2>
-					<p>
-						<fmt:message key="new2" bundle="${resourceBundle}" />
-					</p>
-				</div>
-				<div class="subscribe-btn" data-aos="fade-left" data-aos-delay="400"
-					data-aos-offset="0">
-					<a href="#" class="btn btn-primary"><fmt:message key="new3"
-							bundle="${resourceBundle}" /></a>
-				</div>
-			</div>
-		</div>
-	</section>-->
+		
 	<!-- Call To Action 2 End -->
 	<!-- Footer Start -->
 	<footer>
@@ -719,77 +561,7 @@ application.setAttribute("LOCALE_KEY", locale);
 							</div>
 						</div>
 		</section>
-		<!--   <div class="col-md-6 col-xl-3">
-                        <div class="single-widget twitter-widget" data-aos="fade-up" data-aos-delay="200">
-                            <h6 class="widget-tiltle">Fresh Tweets</h6>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@Themes,</a> Html Version Out Now</h6>
-                                    <span>10 Mins Ago</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@Envato,</a> the best selling item of the day!</h6>
-                                    <span>20 Mins Ago</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@Collis,</a> We Planned to Update the Enavto Author Payment Method
-                                        Soon!</h6>
-                                    <span>10 Mins Ago</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <i class="fa fa-twitter"></i>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">@SteelThemes,</a> Html Version Out Now</h6>
-                                    <span>15 Mins Ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3">
-                        <div class="single-widget recent-post-widget" data-aos="fade-up" data-aos-delay="400">
-                            <h6 class="widget-tiltle">Latest Updates</h6>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post1.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">An engaging</a></h6>
-                                    <p><i class="fa fa-user"></i>Mano <i class="fa fa-eye"></i> 202 Views</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post2.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">Statistics and analysis. The key to succes.</a></h6>
-                                    <p><i class="fa fa-user"></i>Rosias <i class="fa fa-eye"></i> 20 Views</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post3.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">Envato Meeting turns into a photoshooting.</a></h6>
-                                    <p><i class="fa fa-user"></i>Kien <i class="fa fa-eye"></i> 74 Views</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <a class="rcnt-img" href="#"><img src="assets/images/rcnt-post4.png"
-                                        alt="Recent Post"></a>
-                                <div class="media-body ml-3">
-                                    <h6><a href="#">An engaging embedded the video posts</a></h6>
-                                    <p><i class="fa fa-user"></i>Robert <i class="fa fa-eye"></i> 48 Views</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
+		
 		<!-- <div class="col-md-6 col-xl-3">
                         <div class="single-widget tags-widget" data-aos="fade-up" data-aos-delay="800" text-align=right>
                             <h6 class="widget-tiltle">Popular Tags</h6>

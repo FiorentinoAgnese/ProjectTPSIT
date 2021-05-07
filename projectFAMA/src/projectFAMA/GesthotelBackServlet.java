@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class gesthotelBackServlet
  */
 @WebServlet("/gesthotelBackServlet")
-public class gesthotelBackServlet extends HttpServlet {
+public class GesthotelBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public gesthotelBackServlet() {
+    public GesthotelBackServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
